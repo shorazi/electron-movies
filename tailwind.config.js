@@ -29,7 +29,9 @@ module.exports = {
             primary: '#f9f9f9',
             secondary: '#f9f9f9a2',
             accent: '#F8B319',
-            background: '#2b2b2b'
+            success: '#F8B319',
+            background: '#2b2b2b',
+            background2: '#21242D'
           }
         },
         dark: {

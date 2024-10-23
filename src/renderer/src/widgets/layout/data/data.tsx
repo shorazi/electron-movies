@@ -10,12 +10,12 @@ export const CaptionData: CaptionDataType[] = [
         id: 1,
         name: 'Home',
         path: '/',
-        icon: iconsSVG.award
+        icon: iconsSVG.home
       },
       {
         id: 2,
         name: 'Discover',
-        path: '/',
+        path: '/Category',
         icon: iconsSVG.discover
       },
       {

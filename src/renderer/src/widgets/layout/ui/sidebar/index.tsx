@@ -1,5 +1,4 @@
-import { Button, Image } from '@nextui-org/react'
-import { imagesSVG } from '@renderer/shared/assets'
+import { Button } from '@nextui-org/react'
 import { memo, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router'
 import { CaptionData } from '../../data'
@@ -19,10 +18,9 @@ const SideBar = () => {
     console.log(pathname)
   }, [pathname])
   return (
-    <div className="md:w-56 w-32 min-h-[90vh] flex flex-col justify-start items-center sticky">
-      <div className="w-full min-h-[10vh]" key="logo">
-        <Image src={imagesSVG.logo} className="w-full" />
-        {/* logo */}
+    <div className="md:w-56 w-44 min-h-[90vh] flex flex-col justify-start items-center sticky">
+      <div className="w-full min-h-[10vh] bg-background2" key="logo">
+        {/* <Image src={imagesSVG.logo} className="w-full" /> */}
       </div>
       <div className="w-full min-h-[80vh] flex flex-col justify-between items-center">
         {CaptionData.map(({ children, id, label }) => (
@@ -39,11 +37,10 @@ const SideBar = () => {
                   variant="ghost"
                   children={item.name}
                   key={'tab' + item.id}
-                  startContent={<Image src={item.icon} />}
                   onClick={() => {
                     handleNavigate(item.path)
                   }}
-                  className="flex justify-start p-0 items-center text-primary"
+                  className="flex justify-start p-4 items-center text-primary"
                 />
               ))}
             </div>
