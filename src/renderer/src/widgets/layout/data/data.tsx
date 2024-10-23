@@ -1,3 +1,4 @@
+import { iconsSVG } from '@renderer/shared/assets'
 import { CaptionDataType } from './types'
 
 export const CaptionData: CaptionDataType[] = [
@@ -8,22 +9,26 @@ export const CaptionData: CaptionDataType[] = [
       {
         id: 1,
         name: 'Home',
-        path: '/'
+        path: '/',
+        icon: iconsSVG.award
       },
       {
         id: 2,
         name: 'Discover',
-        path: '/'
+        path: '/',
+        icon: iconsSVG.discover
       },
       {
         id: 3,
         name: 'Awards',
-        path: '/'
+        path: '/',
+        icon: iconsSVG.award
       },
       {
         id: 4,
         name: 'Celebrities',
-        path: '/'
+        path: '/',
+        icon: iconsSVG.celebrities
       }
     ]
   },
@@ -34,22 +39,26 @@ export const CaptionData: CaptionDataType[] = [
       {
         id: 5,
         name: 'Recent',
-        path: '/'
+        path: '/',
+        icon: iconsSVG.celebrities
       },
       {
         id: 6,
         name: 'Top Rated',
-        path: '/'
+        path: '/',
+        icon: iconsSVG.celebrities
       },
       {
         id: 7,
         name: 'Playlists',
-        path: '/'
+        path: '/',
+        icon: iconsSVG.celebrities
       },
       {
         id: 8,
         name: 'WatchList',
-        path: '/'
+        path: '/',
+        icon: iconsSVG.celebrities
       }
     ]
   },
@@ -60,12 +69,14 @@ export const CaptionData: CaptionDataType[] = [
       {
         id: 6,
         name: 'Settings',
-        path: '/'
+        path: '/',
+        icon: iconsSVG.settings
       },
       {
         id: 7,
         name: 'Log Out',
-        path: '/'
+        path: '/',
+        icon: iconsSVG.logout
       }
     ]
   }

@@ -2,6 +2,7 @@ interface TabDataType {
   id: number
   name: string
   path: string
+  icon: string
 }
 
 export interface CaptionDataType {
