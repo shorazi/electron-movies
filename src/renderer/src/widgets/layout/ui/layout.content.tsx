@@ -1,3 +1,4 @@
+import { Card } from '@nextui-org/react'
 import { Outlet } from 'react-router'
 import Sidebar from './sidebar'
 
@@ -9,7 +10,7 @@ const Layout = () => {
         <div className="w-full min-h-[90vh]">
           <Outlet />
         </div>
-        <div className="w-96 sticky min-h-[90vh] h-[90vh] bg-secondary"></div>
+        <Card className="w-96 sticky min-h-[90vh] h-[90vh]" isBlurred />
       </div>
     </div>
   )

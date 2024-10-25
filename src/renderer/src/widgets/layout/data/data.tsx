@@ -1,4 +1,4 @@
-import { iconsSVG } from '@renderer/shared/assets'
+import { IconsSVG } from '@renderer/shared/assets'
 import { CaptionDataType } from './types'
 
 export const CaptionData: CaptionDataType[] = [
@@ -10,55 +10,43 @@ export const CaptionData: CaptionDataType[] = [
         id: 1,
         name: 'Home',
         path: '/',
-        icon: iconsSVG.home
+        icon: <IconsSVG.home />
       },
-      {
-        id: 2,
-        name: 'Discover',
-        path: '/Category',
-        icon: iconsSVG.discover
-      },
-      {
-        id: 3,
-        name: 'Awards',
-        path: '/',
-        icon: iconsSVG.award
-      },
-      {
-        id: 4,
-        name: 'Celebrities',
-        path: '/',
-        icon: iconsSVG.celebrities
-      }
-    ]
-  },
-  {
-    id: 2,
-    label: 'Library',
-    children: [
-      {
-        id: 5,
-        name: 'Recent',
-        path: '/',
-        icon: iconsSVG.celebrities
-      },
+      // {
+      //   id: 2,
+      //   name: 'Discover',
+      //   path: '/Category',
+      //   icon: <IconsSVG.discover/>
+      // },
+      // {
+      //   id: 3,
+      //   name: 'Awards',
+      //   path: '/',
+      //   icon: <IconsSVG.award/>
+      // },
+      // {
+      //   id: 4,
+      //   name: 'Celebrities',
+      //   path: '/',
+      //   icon: <IconsSVG.celebrities/>
+      // }
       {
         id: 6,
         name: 'Top Rated',
         path: '/',
-        icon: iconsSVG.celebrities
+        icon: <IconsSVG.celebrities />
       },
       {
         id: 7,
         name: 'Playlists',
         path: '/',
-        icon: iconsSVG.celebrities
+        icon: <IconsSVG.celebrities />
       },
       {
         id: 8,
         name: 'WatchList',
         path: '/',
-        icon: iconsSVG.celebrities
+        icon: <IconsSVG.celebrities />
       }
     ]
   },
@@ -70,13 +58,13 @@ export const CaptionData: CaptionDataType[] = [
         id: 6,
         name: 'Settings',
         path: '/',
-        icon: iconsSVG.settings
+        icon: <IconsSVG.settings />
       },
       {
         id: 7,
         name: 'Log Out',
         path: '/',
-        icon: iconsSVG.logout
+        icon: <IconsSVG.logout />
       }
     ]
   }

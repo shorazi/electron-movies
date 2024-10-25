@@ -1,63 +1,63 @@
-import { Button, Card, Image, Input, Tab, Tabs } from '@nextui-org/react'
-import { iconsSVG } from '@renderer/shared/assets'
+import { Button, Card, Tab, Tabs } from '@nextui-org/react'
+import { IconsSVG, imagesPNG } from '@renderer/shared/assets'
 
 const HomePage = () => {
   return (
     <div className="w-full min-h-[90vh] px-8 flex flex-col justify-between items-center">
       <div className="w-full h-16 flex justify-between items-center">
-        <Tabs variant="underlined" color="success" size="lg" className="text-primary">
+        <Tabs variant="underlined" color="success" size="lg">
           <Tab title="Movies" />
           <Tab title="TV Shows" />
           <Tab title="Anime" />
         </Tabs>
-        <Input
-          type="search"
-          startContent={<Image src={iconsSVG.home} />}
-          className="w-80"
-          placeholder="search"
-          // variant="flat"
-          // color="primary"
-        />
+        <Button
+          className="w-72 flex p-6 justify-start"
+          variant="flat"
+          color="secondary"
+          startContent={<IconsSVG.search />}
+          endContent={<IconsSVG.search />}
+        >
+          Search
+        </Button>
       </div>
       <Card
+        style={{ backgroundImage: `url(${imagesPNG.main_image})`, backgroundSize: '100%' }}
         isBlurred
         shadow="lg"
-        className="w-full h-[350px] flex flex-col justify-between items-start px-5 py-10 rounded-lg"
+        className="w-full h-[350px] flex flex-col justify-between items-start px-6 py-10 rounded-lg"
       >
-        <h1 className="text-5xl text-primary font-[500] mb-[30px]">Popular</h1>
+        <h1 className="text-5xl text-primary font-[500] mb-[30px]">The Crown</h1>
         <div className="w-full flex justify-between items-center">
-          <Button isIconOnly>
-            <Image src={iconsSVG.logout} />
+          <Button isIconOnly variant="flat">
+            <IconsSVG.previous />
           </Button>
-          <Button isIconOnly>
-            <Image src={iconsSVG.logout} />
+          <Button isIconOnly variant="flat">
+            <IconsSVG.next />
           </Button>
         </div>
         <div className="w-full flex justify-between items-center">
           <Button
-            variant="shadow"
-            startContent={<Image src={iconsSVG.logout} />}
+            className="text-primary"
+            variant="flat"
+            startContent={<IconsSVG.add />}
             children="Watchlist"
           />
           <div className="w-16 h-7 bg-background2 rounded-md"></div>
-          <Button
-            className="text-black"
-            startContent={<Image src={iconsSVG.logout} />}
-            children="Watch Now"
-            color="success"
-          />
+          <Button className="text-background" children="Watch Now" color="success" />
         </div>
       </Card>
       <div className="w-full flex flex-col justify-between items-start rounded-lg">
         <h1 className="text-3xl font-[500] mb-[30px]">Popular</h1>
         <div className="w-full h-72 rounded-lg flex gap-8 overflow-x-hidden">
-          {[1, 2, 5].map((item) => (
+          {['Loki', 'Rick and Morty', 'Farcry'].map((item) => (
             <Card
+              style={{ backgroundImage: `url(${imagesPNG.card_image})` }}
               key={'recom' + item}
-              className="bg-secondary text-primary w-[237px] h-72 pt-5 pb-2 px-5 flex flex-col justify-between items-start"
+              isBlurred
+              className="text-primary w-[237px] h-72 pt-5 pb-2 px-6 flex flex-col justify-between items-start"
             >
               <div className="w-full">
-                <p className="text-2xl font-medium">Chernobyl</p>
+                <p className="text-2xl font-medium">{item}</p>
               </div>
               <div className="w-full flex flex-col gap-3">
                 <div className="w-full flex justify-between items-center">
@@ -65,8 +65,8 @@ const HomePage = () => {
                   <p>Mini Series</p>
                 </div>
                 <div className="w-full flex justify-between items-center">
-                  <Button isIconOnly children={<Image src={iconsSVG.settings} />} />
-                  <Button color="success" children="More Info" />
+                  <Button isIconOnly variant="flat" children={<IconsSVG.add />} />
+                  <Button className="text-background" color="success" children="More Info" />
                 </div>
               </div>
             </Card>

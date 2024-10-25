@@ -31,8 +31,17 @@ module.exports = {
             accent: '#F8B319',
             success: '#F8B319',
             background: '#2b2b2b',
+            // background: '#243642',
             background2: '#21242D'
           }
+          // colors: {
+          //   primary: '#E2F1E7',
+          //   secondary: '#387478',
+          //   accent: '#243642',
+          //   success: '#243642',
+          //   background: '#629584',
+          //   background2: '#243642'
+          // }
         },
         dark: {
           colors: {}

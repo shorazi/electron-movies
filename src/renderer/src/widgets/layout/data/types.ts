@@ -1,8 +1,10 @@
+import { ReactNode } from 'react'
+
 interface TabDataType {
   id: number
   name: string
   path: string
-  icon: string
+  icon: ReactNode
 }
 
 export interface CaptionDataType {

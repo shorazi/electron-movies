@@ -1,3 +1,7 @@
+# figma
+
+- [link](<https://www.figma.com/design/u9AIV1g2RaQguVnAP18wk3/Movie-website-(Community)?node-id=0-1&node-type=canvas&t=eWsfuynM1pVOgfwq-0>)
+
 # electron-movies
 
 An Electron application with React and TypeScript
