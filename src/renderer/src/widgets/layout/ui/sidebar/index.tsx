@@ -6,6 +6,7 @@ import { CaptionData } from '../../data'
 const SideBar = () => {
   const navigate = useNavigate()
   const { pathname } = useLocation()
+  console.log(pathname)
 
   const handleNavigate = (navigatePathname: string) => {
     if (pathname !== navigatePathname) {
@@ -14,7 +15,7 @@ const SideBar = () => {
   }
 
   return (
-    <div className="w-[235px] min-h-[90vh] flex flex-col justify-start items-center sticky">
+    <div className="w-[full] max-w-[235px] min-h-[90vh] flex flex-col justify-start items-center sticky">
       <Card className="w-full min-h-[10vh]" isBlurred shadow="lg"></Card>
       {/* <ImagesSVG.logo /> */}
       <div className="w-full min-h-[80vh] flex flex-col justify-between items-center">
@@ -32,7 +33,7 @@ const SideBar = () => {
                 <Button
                   fullWidth
                   color="secondary"
-                  variant={item.id === 1 ? 'flat' : 'ghost'}
+                  variant={item.path === pathname ? 'flat' : 'ghost'}
                   children={item.name}
                   key={'tab' + item.id}
                   size="lg"

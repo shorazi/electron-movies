@@ -12,3 +12,9 @@ export interface CaptionDataType {
   label: string
   children: TabDataType[]
 }
+
+export interface IMovie {
+  id: number
+  img: string
+  name: string
+}
