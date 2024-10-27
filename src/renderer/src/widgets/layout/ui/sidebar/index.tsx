@@ -15,7 +15,7 @@ const SideBar = () => {
   }
 
   return (
-    <div className="w-[full] max-w-[235px] min-h-[90vh] flex flex-col justify-start items-center sticky">
+    <div className="w-[235px] h-[90vh] flex flex-col justify-start items-center sticky">
       <Card className="w-full min-h-[10vh]" isBlurred shadow="lg"></Card>
       {/* <ImagesSVG.logo /> */}
       <div className="w-full min-h-[80vh] flex flex-col justify-between items-center">
