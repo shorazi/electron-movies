@@ -1,5 +1,5 @@
 import { imagesPNG } from '@renderer/shared/assets'
-import { IMovie } from '@renderer/widgets/layout/data'
+import { IMovie } from '@renderer/widgets/layout/lib'
 
 export const data: IMovie[] = [
   {

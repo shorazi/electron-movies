@@ -10,7 +10,7 @@ export const CaptionData: CaptionDataType[] = [
         id: 1,
         name: 'Home',
         path: '/',
-        icon: <IconsSVG.home />
+        Icon: <IconsSVG.home />
       },
       // {
       //   id: 2,
@@ -34,7 +34,7 @@ export const CaptionData: CaptionDataType[] = [
         id: 6,
         name: 'Top Rated',
         path: '/top-rated',
-        icon: <IconsSVG.celebrities />
+        Icon: <IconsSVG.celebrities />
       }
       // {
       //   id: 7,

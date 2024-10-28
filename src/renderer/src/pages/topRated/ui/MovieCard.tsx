@@ -1,5 +1,5 @@
 import { Card, CardBody, CardFooter, Image } from '@nextui-org/react'
-import { IMovie } from '@renderer/widgets/layout/data'
+import { IMovie } from '@renderer/widgets/layout/lib'
 
 const MovieCard = ({ movieInfo }: { movieInfo: IMovie }) => {
   return (

@@ -4,7 +4,7 @@ interface TabDataType {
   id: number
   name: string
   path: string
-  icon: ReactNode
+  Icon: ReactNode
 }
 
 export interface CaptionDataType {
