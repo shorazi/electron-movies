@@ -33,39 +33,39 @@ export const CaptionData: CaptionDataType[] = [
       {
         id: 6,
         name: 'Top Rated',
-        path: '/',
-        icon: <IconsSVG.celebrities />
-      },
-      {
-        id: 7,
-        name: 'Playlists',
-        path: '/',
-        icon: <IconsSVG.celebrities />
-      },
-      {
-        id: 8,
-        name: 'WatchList',
-        path: '/',
+        path: '/top-rated',
         icon: <IconsSVG.celebrities />
       }
-    ]
-  },
-  {
-    id: 3,
-    label: 'General',
-    children: [
-      {
-        id: 6,
-        name: 'Settings',
-        path: '/',
-        icon: <IconsSVG.settings />
-      },
-      {
-        id: 7,
-        name: 'Log Out',
-        path: '/',
-        icon: <IconsSVG.logout />
-      }
+      // {
+      //   id: 7,
+      //   name: 'Playlists',
+      //   path: '/',
+      //   icon: <IconsSVG.celebrities />
+      // },
+      // {
+      //   id: 8,
+      //   name: 'WatchList',
+      //   path: '/',
+      //   icon: <IconsSVG.celebrities />
+      // }
     ]
   }
+  // {
+  //   id: 3,
+  //   label: 'General',
+  //   children: [
+  //     {
+  //       id: 6,
+  //       name: 'Settings',
+  //       path: '/',
+  //       icon: <IconsSVG.settings />
+  //     },
+  //     {
+  //       id: 7,
+  //       name: 'Log Out',
+  //       path: '/',
+  //       icon: <IconsSVG.logout />
+  //     }
+  //   ]
+  // }
 ]

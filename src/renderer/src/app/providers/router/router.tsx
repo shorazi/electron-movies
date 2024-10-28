@@ -1,6 +1,7 @@
 import CategoryPage from '@renderer/pages/category'
 import HomePage from '@renderer/pages/home'
 import Layout from '@renderer/widgets/layout'
+import TopRated from '@renderer/pages/topRated'
 import { createBrowserRouter } from 'react-router-dom'
 
 const router = createBrowserRouter([
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: '/category',
         element: <CategoryPage />
+      },
+      {
+        path: '/top-rated',
+        element: <TopRated />
       }
     ]
   }
