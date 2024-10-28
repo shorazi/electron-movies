@@ -24,6 +24,7 @@
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/utils": "^3.0.0",
     "@nextui-org/react": "^2.4.8",
+    "@svgr/plugin-svgo": "^8.1.0",
     "electron-updater": "^6.1.7",
     "framer-motion": "^11.11.9",
     "react-router": "^6.27.0",
