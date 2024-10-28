@@ -1,7 +1,8 @@
+import Authorization from '@renderer/pages/authorization'
 import CategoryPage from '@renderer/pages/category'
 import HomePage from '@renderer/pages/home'
-import Layout from '@renderer/widgets/layout'
 import TopRated from '@renderer/pages/topRated'
+import Layout from '@renderer/widgets/layout'
 import { createBrowserRouter } from 'react-router-dom'
 
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
         element: <TopRated />
       }
     ]
+  },
+  {
+    path: '/authorization',
+    element: <Authorization />
   }
 ])
 
