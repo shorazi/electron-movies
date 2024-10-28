@@ -7,7 +7,7 @@ const MovieCard = ({ movieInfo }: { movieInfo: IMovie }) => {
       key={movieInfo?.id}
       isBlurred
       isPressable
-      className="w-[240px] flex-shrink-0 flex-grow-0 flex-auto bg-black rounded-b-none"
+      className="w-[240px] flex-shrink-0 flex-grow-0 flex-auto rounded-b-none"
     >
       <CardBody className="overflow-visible p-0">
         <Image
@@ -15,7 +15,7 @@ const MovieCard = ({ movieInfo }: { movieInfo: IMovie }) => {
           loading="lazy"
           width={250}
           alt={movieInfo?.name}
-          className="object-cover rounded-none"
+          className="object-cover"
           src={movieInfo?.img}
           height={350}
         />

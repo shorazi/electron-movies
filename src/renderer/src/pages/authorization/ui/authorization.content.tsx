@@ -1,8 +1,22 @@
 import { Button, Card, CardBody, Input, Link, Tab, Tabs } from '@nextui-org/react'
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 
 const Authorization = () => {
   const [selected, setSelected] = useState('login')
+  const [form, setForm] = useState({
+    email: 'admin@admin.com',
+    password: 'qwerty123'
+  })
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const res = await fetch('https://filmfinder-47w5.onrender.com/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form)
+    })
+    console.log(res)
+  }
 
   return (
     <div className="w-full min-h-[100vh] bg-gradient-to-br from-background via-background2 via-70% to-primary flex justify-center items-center">
@@ -18,14 +32,21 @@ const Authorization = () => {
             onSelectionChange={(e) => setSelected(e.toString())}
           >
             <Tab key="login" title="Login">
-              <form className="flex flex-col gap-4">
-                <Input isRequired label="Email" placeholder="Enter your email" type="email" />
+              <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+                <Input
+                  isRequired
+                  label="Email"
+                  placeholder="Enter your email"
+                  type="email"
+                  value={form.email}
+                />
                 <Input
                   variant="flat"
                   isRequired
                   label="Password"
                   placeholder="Enter your password"
                   type="password"
+                  value={form.password}
                 />
                 <p className="text-center text-small text-primary">
                   Need to create an account?{' '}
@@ -34,7 +55,7 @@ const Authorization = () => {
                   </Link>
                 </p>
                 <div className="flex gap-2 justify-end">
-                  <Button fullWidth color="success">
+                  <Button fullWidth color="success" type="submit">
                     Login
                   </Button>
                 </div>
