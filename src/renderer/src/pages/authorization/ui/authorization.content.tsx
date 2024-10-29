@@ -1,5 +1,32 @@
 import { Button, Card, CardBody, Input, Link, Tab, Tabs } from '@nextui-org/react'
+// import fetch from 'electron-fetch'
+// import { type } from 'dotenv/config'
 import { FormEvent, useState } from 'react'
+
+// POST
+const api = import.meta.env.VITE_BASE_URL
+// const api = 'http://filmfinder-47w5.onrender.com/auth/login'
+// GET
+// const api = 'https://21481c5a2a0ddb9a.mokky.dev/sportlist'
+// const api = 'https://filmfinder-47w5.onrender.com/'
+
+async function postData(data = {}) {
+  // try {
+  const response = await fetch(api + '/auth/login', {
+    // method: 'GET',
+    method: 'POST',
+    // mode: 'cors',
+    // cache: 'no-cache',
+    // credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    // redirect: 'follow',
+    // referrerPolicy: 'no-referrer',
+    body: JSON.stringify(data)
+  })
+  return await response.json()
+}
 
 const Authorization = () => {
   const [selected, setSelected] = useState('login')
@@ -10,12 +37,10 @@ const Authorization = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const res = await fetch('https://filmfinder-47w5.onrender.com/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form)
+    postData({
+      email: e.target['Email'].value,
+      password: e.target['Password'].value
     })
-    console.log(res)
   }
 
   return (
@@ -27,7 +52,7 @@ const Authorization = () => {
             color="success"
             fullWidth
             size="md"
-            // aria-label="Tabs form"
+            aria-label="Tabs form"
             selectedKey={selected}
             onSelectionChange={(e) => setSelected(e.toString())}
           >
@@ -35,6 +60,7 @@ const Authorization = () => {
               <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                 <Input
                   isRequired
+                  name="Email"
                   label="Email"
                   placeholder="Enter your email"
                   type="email"
@@ -43,6 +69,7 @@ const Authorization = () => {
                 <Input
                   variant="flat"
                   isRequired
+                  name="Password"
                   label="Password"
                   placeholder="Enter your password"
                   type="password"
