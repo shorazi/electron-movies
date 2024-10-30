@@ -16,12 +16,13 @@ const SideBar = () => {
 
   if (pathname === '/top-rated') return null
   return (
-    <div className="w-[235px] min-h-[90vh]">
-      <div className="w-[235px] h-[90vh] flex flex-col justify-between items-center sticky">
-        <div className="w-full min-h-[10vh]  flex justify-center items-center">
-          {/* <ImagesSVG.logo width={176} /> */}
+    <div className="w-[235px] h-[95vh]">
+      <div className="w-[235px] h-[95vh] flex flex-col justify-between items-center sticky pl-4">
+        <div className="w-full h-[10vh] flex justify-center items-center">
+          {/* <ImagesSVG.logo /> */}
+          {/* <p>FilmFinder</p> */}
         </div>
-        <div className="w-full min-h-[78vh] flex flex-col justify-between items-center">
+        <div className="w-full h-[80vh] flex flex-col justify-between items-center">
           {CaptionData.map(({ children, id, label }) => (
             <div
               key={'label' + id}
@@ -44,7 +45,7 @@ const SideBar = () => {
                     onClick={() => {
                       handleNavigate(path)
                     }}
-                    className="flex justify-start p-6 items-center text-primary"
+                    className="flex justify-start items-center text-primary"
                   />
                 ))}
               </div>
