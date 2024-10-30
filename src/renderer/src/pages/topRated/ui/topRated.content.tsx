@@ -12,7 +12,7 @@ const TopRated = () => {
     <>
       <div className="w-full flex p-8 flex-col gap-10">
         <div className="flex justify-start items-center gap-3">
-          <Button isIconOnly variant="flat" onClick={() => navigate('/')}>
+          <Button isIconOnly variant="flat" type="submit" onClick={() => navigate('/')}>
             <IconsSVG.previous />
           </Button>
           <h1 className="text-[30px] font-bold text-[#F8B319]">Back home</h1>
