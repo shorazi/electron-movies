@@ -2,7 +2,7 @@ import { Outlet } from 'react-router'
 
 const MainOutlet = () => {
   return (
-    <div className="w-full min-h-[90vh]">
+    <div className="w-full h-[95vh]">
       <Outlet />
     </div>
   )

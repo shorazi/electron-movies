@@ -1,59 +1,58 @@
-import { Button, Card, Tab, Tabs } from '@nextui-org/react'
+import { Button, Card } from '@nextui-org/react'
 import { IconsSVG, imagesPNG } from '@renderer/shared/assets'
+import { MainCard } from '@renderer/shared/ui'
+import Header from './header'
 
 const HomePage = () => {
   return (
-    <div className="w-full h-[90vh] px-8 flex flex-col justify-between items-center">
-      <div className="w-full min-h-[10vh] flex justify-between items-center">
-        <Tabs variant="underlined" color="success" size="lg">
-          <Tab title="Movies" />
-          <Tab title="TV Shows" />
-          <Tab title="Anime" />
-        </Tabs>
-        <Button className="w-64 flex p-6 justify-between" variant="flat" color="secondary">
-          <span className="flex gap-3">
-            <IconsSVG.search />
-            Search
-          </span>
-          <IconsSVG.filter />
-        </Button>
-      </div>
-      <div className="w-full min-h-[78vh] flex flex-col justify-between items-center">
-        <Card
-          style={{ backgroundImage: `url(${imagesPNG.main_image})`, backgroundSize: '100%' }}
+    <div className="w-full h-[95vh] px-8 flex flex-col justify-between items-center">
+      <Header />
+      <div className="w-full h-[80vh] flex flex-col justify-start items-center gap-4">
+        {/* <Card
           isBlurred
-          shadow="lg"
-          className="w-full h-[350px] flex flex-col justify-between items-start px-6 py-10 rounded-lg"
+          shadow="md"
+          className="w-full h-[240px] flex flex-col justify-between items-start rounded-lg"
         >
-          <h1 className="text-5xl text-primary font-[500] mb-[30px]">The Crown</h1>
-          <div className="w-full flex justify-between items-center">
-            <Button isIconOnly variant="flat">
-              <IconsSVG.previous />
-            </Button>
-            <Button isIconOnly variant="flat">
-              <IconsSVG.next />
-            </Button>
-          </div>
-          <div className="w-full flex justify-between items-center">
-            <Button
-              className="text-primary"
-              variant="flat"
-              startContent={<IconsSVG.add />}
-              children="Watchlist"
-            />
-            <div className="w-16 h-7 bg-background2 rounded-md"></div>
-            <Button className="text-background" children="Watch Now" color="success" />
-          </div>
-        </Card>
-        <div className="w-full flex flex-col justify-between items-start rounded-lg">
-          <h1 className="text-3xl font-[500] mb-[30px]">Popular</h1>
-          <div className="w-full h-72 rounded-lg flex gap-8 overflow-x-hidden">
+          <CardHeader className="w-full h-[240px] px-4 py-7 absolute z-10 top-1 flex flex-col justify-between items-start">
+            <h1 className="text-5xl leading-4 text-primary font-[500] mb-[30px]">The Crown</h1>
+            <div className="w-full flex justify-between items-center">
+              <Button isIconOnly variant="flat" color="secondary">
+                <IconsSVG.previous />
+              </Button>
+              <Button isIconOnly variant="flat" color="secondary">
+                <IconsSVG.next />
+              </Button>
+            </div>
+            <div className="w-full flex justify-between items-center">
+              <Button
+                className="text-primary"
+                variant="flat"
+                color="secondary"
+                startContent={<IconsSVG.add />}
+                children="Watchlist"
+              />
+              <div className="w-16 h-7 bg-background2 rounded-md"></div>
+              <Button className="text-background" children="Watch Now" color="success" />
+            </div>
+          </CardHeader>
+          <Image
+            removeWrapper
+            alt="Card background"
+            className="z-0 w-full h-full object-cover"
+            src={imagesPNG.main_image}
+          />
+        </Card> */}
+        <MainCard />
+        <div className="w-full flex flex-col justify-between items-start gap-4">
+          <h1 className="text-3xl font-[500]">Popular</h1>
+          <div className="w-full rounded-lg flex gap-8 overflow-x-hidden">
             {['Loki', 'Rick and Morty', 'Farcry'].map((item) => (
               <Card
                 style={{ backgroundImage: `url(${imagesPNG.card_image})` }}
-                key={'recom' + item}
+                key={'popularFilm' + item}
                 isBlurred
-                className="text-primary w-[237px] h-72 pt-5 pb-2 px-6 flex flex-col justify-between items-start"
+                shadow="md"
+                className="text-primary w-[200px] h-60 pt-4 pb-3 px-4 flex flex-col justify-between items-start"
               >
                 <div className="w-full">
                   <p className="text-2xl font-medium">{item}</p>
@@ -64,7 +63,12 @@ const HomePage = () => {
                     <p>Mini Series</p>
                   </div>
                   <div className="w-full flex justify-between items-center">
-                    <Button isIconOnly variant="flat" children={<IconsSVG.add />} />
+                    <Button
+                      isIconOnly
+                      variant="flat"
+                      color="secondary"
+                      children={<IconsSVG.add />}
+                    />
                     <Button className="text-background" color="success" children="More Info" />
                   </div>
                 </div>
