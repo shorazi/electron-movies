@@ -8,7 +8,7 @@ interface IProps {
   imageSrc?: string
 }
 
-const MainCard = (props: IProps) => {
+const UIMainCard = (props: IProps) => {
   const { imageSrc = imagesPNG.main_image, nextFnc, previousFnc, title = 'The Crown' } = props
 
   return (
@@ -54,4 +54,4 @@ const MainCard = (props: IProps) => {
   )
 }
 
-export default MainCard
+export default UIMainCard

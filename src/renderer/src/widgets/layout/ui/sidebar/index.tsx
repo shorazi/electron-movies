@@ -1,8 +1,11 @@
 import { Button } from '@nextui-org/react'
 import { IconsSVG } from '@renderer/shared/assets'
+import { tokenInstance } from '@renderer/shared/utils'
 import { memo } from 'react'
 import { useLocation, useNavigate } from 'react-router'
-import { CaptionData } from '../../lib'
+import { PathData } from '../../lib'
+
+const { home, toprated, signout } = PathData
 
 const SideBar = () => {
   const navigate = useNavigate()
@@ -23,35 +26,68 @@ const SideBar = () => {
           {/* <p>FilmFinder</p> */}
         </div>
         <div className="w-full h-[80vh] flex flex-col justify-between items-center">
-          {CaptionData.map(({ children, id, label }) => (
-            <div
-              key={'label' + id}
-              className="w-full flex flex-col justify-start items-start gap-4"
-            >
-              <h1 className="text-base text-secondary">{label}</h1>
-              <div
-                aria-label={'tab' + id}
-                className="w-full flex flex-col justify-start items-start gap-2"
-              >
-                {children.map(({ id, name, path }) => (
-                  <Button
-                    startContent={<IconsSVG.celebrities />}
-                    fullWidth
-                    color="secondary"
-                    variant={path === pathname ? 'flat' : 'ghost'}
-                    children={name}
-                    key={'tab' + id}
-                    size="lg"
-                    type="submit"
-                    onClick={() => {
-                      handleNavigate(path)
-                    }}
-                    className="flex justify-start items-center text-primary"
-                  />
-                ))}
-              </div>
+          <div className="w-full flex flex-col justify-start items-start gap-4">
+            <h1 className="text-base text-secondary">Menu</h1>
+            <div className="w-full flex flex-col justify-start items-start gap-2">
+              <Button
+                startContent={<IconsSVG.home />}
+                fullWidth
+                color="secondary"
+                variant={home.path === pathname ? 'flat' : 'ghost'}
+                children={home.name}
+                size="lg"
+                type="submit"
+                onClick={() => {
+                  handleNavigate(home.path)
+                }}
+                className="flex justify-start items-center text-primary"
+              />
+              <Button
+                startContent={<IconsSVG.celebrities />}
+                fullWidth
+                color="secondary"
+                variant={toprated.path === pathname ? 'flat' : 'ghost'}
+                children={toprated.name}
+                size="lg"
+                type="submit"
+                onClick={() => {
+                  handleNavigate(toprated.path)
+                }}
+                className="flex justify-start items-center text-primary"
+              />
+              <Button
+                startContent={<IconsSVG.discover />}
+                fullWidth
+                color="secondary"
+                variant={toprated.path === pathname ? 'flat' : 'ghost'}
+                children={toprated.name}
+                size="lg"
+                type="submit"
+                onClick={() => {
+                  handleNavigate(toprated.path)
+                }}
+                className="flex justify-start items-center text-primary"
+              />
             </div>
-          ))}
+          </div>
+          <div className="w-full flex flex-col justify-start items-start gap-4">
+            {/* <h1 className="text-base text-secondary">More</h1> */}
+            <div className="w-full flex flex-col justify-start items-start gap-2">
+              <Button
+                startContent={<IconsSVG.logout />}
+                fullWidth
+                color="secondary"
+                variant="ghost"
+                children={signout.name}
+                size="lg"
+                type="submit"
+                onClick={() => {
+                  tokenInstance.clearToken(), navigate(signout.path)
+                }}
+                className="flex justify-start items-center text-primary"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

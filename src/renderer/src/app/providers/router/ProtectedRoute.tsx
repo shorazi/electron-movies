@@ -1,4 +1,4 @@
-import { tokenInstance } from '@renderer/shared/utils/tokenInstance'
+import { tokenInstance } from '@renderer/shared/utils'
 import { Navigate, Outlet } from 'react-router'
 
 const ProtectedRoute = () => {

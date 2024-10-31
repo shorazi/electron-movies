@@ -1,6 +1,24 @@
 import { IconsSVG } from '@renderer/shared/assets'
 import { CaptionDataType } from './types'
 
+export const PathData = {
+  home: {
+    name: 'Home',
+    path: '/',
+    Icon: <IconsSVG.home />
+  },
+  toprated: {
+    name: 'Top Rated',
+    path: '/top-rated',
+    Icon: 'celebrities'
+  },
+  signout: {
+    name: 'Sing Out',
+    path: '/authorization',
+    Icon: 'celebrities'
+  }
+}
+
 export const CaptionData: CaptionDataType[] = [
   {
     id: 1,

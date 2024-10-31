@@ -1,5 +1,5 @@
 import { Button, Card, CardBody, Input, Link, Tab, Tabs } from '@nextui-org/react'
-import { tokenInstance } from '@renderer/shared/utils/tokenInstance'
+import { tokenInstance } from '@renderer/shared/utils'
 import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router'
 
@@ -95,7 +95,7 @@ const Authorization = () => {
                   placeholder="Enter your password"
                   type="password"
                 />
-                <p className="text-center text-small">
+                <p className="text-center text-small text-primary">
                   Already have an account?{' '}
                   <Link size="sm" onPress={() => setSelected('login')}>
                     Login

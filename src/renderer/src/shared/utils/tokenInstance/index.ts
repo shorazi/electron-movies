@@ -1,4 +1,4 @@
-import { USER_TOKEN_KEY_LOCALSTORAGE } from '../constants'
+import { USER_TOKEN_KEY_LOCALSTORAGE } from '@renderer/shared/constants'
 
 export const tokenInstance = {
   setToken: (token: string) => {
