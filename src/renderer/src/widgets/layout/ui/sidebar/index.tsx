@@ -42,6 +42,7 @@ const SideBar = () => {
                     children={name}
                     key={'tab' + id}
                     size="lg"
+                    type="submit"
                     onClick={() => {
                       handleNavigate(path)
                     }}

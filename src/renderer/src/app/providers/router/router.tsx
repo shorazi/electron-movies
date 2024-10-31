@@ -4,6 +4,7 @@ import HomePage from '@renderer/pages/home'
 import TopRated from '@renderer/pages/topRated'
 import Layout from '@renderer/widgets/layout'
 import { createBrowserRouter } from 'react-router-dom'
+import ProtectedRoute from './ProtectedRoute'
 
 const router = createBrowserRouter([
   {
@@ -11,20 +12,26 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        index: true,
-        element: <HomePage />
-      },
-      {
-        path: '/category',
-        element: <CategoryPage />
-      },
-      {
-        path: '/top-rated',
-        element: <TopRated />
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: '/',
+            element: <HomePage />
+          },
+          {
+            path: '/category',
+            element: <CategoryPage />
+          },
+          {
+            path: '/top-rated',
+            element: <TopRated />
+          }
+        ]
       }
     ]
   },
   {
+    index: true,
     path: '/authorization',
     element: <Authorization />
   }

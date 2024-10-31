@@ -1,34 +1,27 @@
 import { Button, Card, CardBody, Input, Link, Tab, Tabs } from '@nextui-org/react'
-// import fetch from 'electron-fetch'
-// import { type } from 'dotenv/config'
+import { tokenInstance } from '@renderer/shared/utils/tokenInstance'
 import { FormEvent, useState } from 'react'
+import { useNavigate } from 'react-router'
 
-// POST
 const api = import.meta.env.VITE_BASE_URL
-// const api = 'http://filmfinder-47w5.onrender.com/auth/login'
-// GET
-// const api = 'https://21481c5a2a0ddb9a.mokky.dev/sportlist'
-// const api = 'https://filmfinder-47w5.onrender.com/'
 
 async function postData(data = {}) {
-  // try {
-  const response = await fetch(api + '/auth/login', {
-    // method: 'GET',
-    method: 'POST',
-    // mode: 'cors',
-    // cache: 'no-cache',
-    // credentials: 'same-origin',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    // redirect: 'follow',
-    // referrerPolicy: 'no-referrer',
-    body: JSON.stringify(data)
-  })
-  return await response.json()
+  try {
+    const response = await fetch(api + '/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    return await response.json()
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 const Authorization = () => {
+  const navigate = useNavigate()
   const [selected, setSelected] = useState('login')
   const [form, setForm] = useState({
     email: 'admin@admin.com',
@@ -37,10 +30,14 @@ const Authorization = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    postData({
+    const data = await postData({
       email: e.target['Email'].value,
       password: e.target['Password'].value
     })
+    if (data?.user) {
+      tokenInstance.setToken(data?.user)
+      navigate('/')
+    }
   }
 
   return (
