@@ -1,5 +1,6 @@
 import { Button, Card } from '@nextui-org/react'
 import { IconsSVG, imagesPNG } from '@renderer/shared/assets'
+import { UIBody } from '@renderer/shared/ui'
 import UIMainCard from '@renderer/shared/ui/MainCard/MainCard'
 import Header from './header'
 
@@ -10,7 +11,7 @@ const HomePage = () => {
       <div className="w-full h-[80vh] flex flex-col justify-start items-center gap-4">
         <UIMainCard />
         <div className="w-full flex flex-col justify-between items-start gap-4">
-          <h1 className="text-3xl font-[500]">Popular</h1>
+          <UIBody>Popular</UIBody>
           <div className="w-full rounded-lg flex gap-8 overflow-x-hidden">
             {['Loki', 'Rick and Morty', 'Farcry'].map((item) => (
               <Card
@@ -48,3 +49,38 @@ const HomePage = () => {
 }
 
 export default HomePage
+
+function multiply(a, b) {
+  let result = 0
+  for (let i = 1; i < b; i++) {
+    result = add(result, a)
+  }
+  return result
+}
+
+// function minus(a, b) {
+//   return Math.max(a, b) % Math.min(a, b)
+// }
+
+function Delete(a, b) {
+  let max = Math.max(a, b)
+  let min = Math.min(a, b)
+  let result = 0
+  while (max > 0) {
+    max = max - min
+    result = add(result, 1)
+  }
+}
+
+function add(a, b) {
+  while (b !== 0) {
+    let carry = a & b
+
+    a = a ^ b
+
+    b = carry << 1
+  }
+  return a
+}
+
+console.log(add(23, 1))

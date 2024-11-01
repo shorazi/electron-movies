@@ -1,3 +1,2 @@
-import MainCard from './MainCard/MainCard'
-
-export { MainCard }
+export * from './MainCard/MainCard'
+export * from './Typography'
