@@ -1,43 +1,42 @@
 import { Button, Card, CardBody, Input, Link, Tab, Tabs } from '@nextui-org/react'
+import useAuth from '@renderer/shared/api/auth/useAuth'
 import { tokenInstance } from '@renderer/shared/utils'
-import { FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router'
 
-const api = import.meta.env.VITE_BASE_URL
-
-async function postData(data = {}) {
-  try {
-    const response = await fetch(api + '/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-    return await response.json()
-  } catch (error) {
-    console.log(error)
-  }
-}
-
 const Authorization = () => {
+  const { isLoading: isSignInLoading, auth: signInAuth } = useAuth('/auth/login')
+  const { isLoading: isSignUpLoading, auth: signUpAuth } = useAuth('/auth/register')
   const navigate = useNavigate()
   const [selected, setSelected] = useState('login')
   const [form, setForm] = useState({
-    email: 'admin@admin.com',
-    password: 'qwerty123'
+    username: 'ozod',
+    email: 'ozod@mail.something',
+    password: 'threesome'
   })
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmitSignIn = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const data = await postData({
-      email: e.target['Email'].value,
-      password: e.target['Password'].value
+    const data = await signInAuth({
+      email: e.target['email'].value,
+      password: e.target['password'].value
     })
     if (data?.user) {
       tokenInstance.setToken(data?.user)
       navigate('/')
     }
+  }
+  const handleSubmitSignUp = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    await signUpAuth({
+      username: e.target['username'].value,
+      email: e.target['email'].value,
+      password: e.target['password'].value
+    })
+  }
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value })
   }
 
   return (
@@ -54,23 +53,25 @@ const Authorization = () => {
             onSelectionChange={(e) => setSelected(e.toString())}
           >
             <Tab key="login" title="Login">
-              <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+              <form className="flex flex-col gap-4" onSubmit={handleSubmitSignIn}>
                 <Input
                   isRequired
-                  name="Email"
+                  name="email"
                   label="Email"
                   placeholder="Enter your email"
                   type="email"
                   value={form.email}
+                  onChange={handleChange}
                 />
                 <Input
                   variant="flat"
                   isRequired
-                  name="Password"
+                  name="password"
                   label="Password"
                   placeholder="Enter your password"
                   type="password"
                   value={form.password}
+                  onChange={handleChange}
                 />
                 <p className="text-center text-small text-primary">
                   Need to create an account?{' '}
@@ -79,21 +80,39 @@ const Authorization = () => {
                   </Link>
                 </p>
                 <div className="flex gap-2 justify-end">
-                  <Button fullWidth color="success" type="submit">
+                  <Button isLoading={isSignInLoading} fullWidth color="success" type="submit">
                     Login
                   </Button>
                 </div>
               </form>
             </Tab>
             <Tab key="sign-up" title="Sign up">
-              <form className="flex flex-col gap-4 h-[300px]">
-                <Input isRequired label="Name" placeholder="Enter your name" type="password" />
-                <Input isRequired label="Email" placeholder="Enter your email" type="email" />
+              <form className="flex flex-col gap-4 h-[300px]" onSubmit={handleSubmitSignUp}>
                 <Input
                   isRequired
+                  name="username"
+                  label="Username"
+                  placeholder="Enter your name"
+                  value={form.username}
+                  onChange={handleChange}
+                />
+                <Input
+                  isRequired
+                  label="Email"
+                  name="email"
+                  placeholder="Enter your email"
+                  type="email"
+                  value={form.email}
+                  onChange={handleChange}
+                />
+                <Input
+                  isRequired
+                  name="password"
                   label="Password"
                   placeholder="Enter your password"
                   type="password"
+                  value={form.password}
+                  onChange={handleChange}
                 />
                 <p className="text-center text-small text-primary">
                   Already have an account?{' '}
@@ -102,7 +121,7 @@ const Authorization = () => {
                   </Link>
                 </p>
                 <div className="flex gap-2 justify-end">
-                  <Button fullWidth color="primary">
+                  <Button isLoading={isSignUpLoading} fullWidth color="primary" type="submit">
                     Sign up
                   </Button>
                 </div>

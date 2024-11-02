@@ -1,9 +1,11 @@
 import { Button, Card } from '@nextui-org/react'
 import { IconsSVG } from '@renderer/shared/assets'
+import { tokenInstance } from '@renderer/shared/utils'
 import { memo } from 'react'
 import { useLocation } from 'react-router'
 
 const RightSidebar = () => {
+  const { getToken } = tokenInstance
   const { pathname } = useLocation()
 
   if (pathname === '/top-rated') return null
@@ -14,7 +16,7 @@ const RightSidebar = () => {
           <Button isIconOnly variant="flat" color="secondary">
             <IconsSVG.bell />
           </Button>
-          <div className="text-[18px] font-bold text-success">Marcus Junius B.</div>
+          <div className="text-[18px] font-bold text-success">{getToken()}</div>
           <Button isIconOnly variant="flat" color="secondary">
             <IconsSVG.user />
           </Button>
