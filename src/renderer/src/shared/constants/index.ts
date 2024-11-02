@@ -1,7 +1,7 @@
 export const USER_TOKEN_KEY_LOCALSTORAGE = 'token'
 
 export const routerPaths = {
-  login: ''
+  login: '/authorization'
 }
 
 // registration - /auth/register
