@@ -1,27 +1,21 @@
-import { tokenInstance } from '@renderer/shared/utils'
 import { ReactNode } from 'react'
+import toast from 'react-hot-toast'
 import { SWRConfig } from 'swr'
-
-const fetcher = (...args: [string]) => {
-  const { getToken } = tokenInstance
-  return fetch(...args, {
-    headers: {
-      Authorization: `Bearer ${getToken()}`,
-      'Content-Type': 'application/json'
-    }
-  }).then((res) => {
-    if (!res.ok) {
-      throw new Error(`Error: ${res.status} - ${res.statusText}`)
-    }
-    return res.json()
-  })
-}
+import { fetcher } from './fetcher'
 
 const SWRProvider = ({ children }: { children: ReactNode }) => {
   return (
     <SWRConfig
       value={{
         fetcher: fetcher,
+        onError(err) {
+          toast.error(`Error while fetching, ${err}`, {
+            position: 'top-right'
+          })
+        },
+        onSuccess(data) {
+          toast.success(data?.message, { position: 'top-right' })
+        },
         revalidateOnReconnect: false,
         revalidateOnFocus: false,
         dedupingInterval: 1000000,
