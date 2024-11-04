@@ -41,7 +41,7 @@ const UIMainCard = (props: IProps) => {
             children="Watchlist"
           />
           <div className="w-16 h-7 bg-background2 rounded-md"></div>
-          <Button className="text-background" children="Watch Now" color="success" />
+          <Button className="text-background2" children="Watch Now" color="success" />
         </div>
       </CardHeader>
       <Image

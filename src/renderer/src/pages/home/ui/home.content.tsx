@@ -49,38 +49,3 @@ const HomePage = () => {
 }
 
 export default HomePage
-
-function multiply(a, b) {
-  let result = 0
-  for (let i = 1; i < b; i++) {
-    result = add(result, a)
-  }
-  return result
-}
-
-// function minus(a, b) {
-//   return Math.max(a, b) % Math.min(a, b)
-// }
-
-function Delete(a, b) {
-  let max = Math.max(a, b)
-  let min = Math.min(a, b)
-  let result = 0
-  while (max > 0) {
-    max = max - min
-    result = add(result, 1)
-  }
-}
-
-function add(a, b) {
-  while (b !== 0) {
-    let carry = a & b
-
-    a = a ^ b
-
-    b = carry << 1
-  }
-  return a
-}
-
-console.log(add(23, 1))
