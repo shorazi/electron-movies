@@ -1,5 +1,6 @@
 import { Button, Input, Link } from '@nextui-org/react'
 import useAuth from '@renderer/shared/api/auth/useAuth'
+import { routesPaths } from '@renderer/shared/constants'
 import { ChangeEvent, FormEvent, useState } from 'react'
 
 const SignUp = ({ handleTabSelect }: { handleTabSelect: (value: string) => void }) => {
@@ -8,7 +9,7 @@ const SignUp = ({ handleTabSelect }: { handleTabSelect: (value: string) => void 
     email: '',
     password: ''
   })
-  const { isLoading: isSignUpLoading, auth: signUpAuth } = useAuth('/auth/register')
+  const { isLoading: isSignUpLoading, auth: signUpAuth } = useAuth(routesPaths.signUp)
 
   const handleSubmitSignUp = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()

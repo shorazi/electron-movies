@@ -3,6 +3,12 @@ export const USER_TOKEN_KEY_LOCALSTORAGE = 'token'
 export const routerPaths = {
   login: '/authorization'
 }
+export const routesPaths = {
+  signIn: '/auth/login',
+  signUp: '/auth/register',
+  movies: '/movies/search',
+  moviesByName: '/movies/search/name'
+}
 
 // registration - /auth/register
 // login - /auth/login
