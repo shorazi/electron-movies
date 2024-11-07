@@ -1,5 +1,8 @@
 import { Button, Card } from '@nextui-org/react'
+import Genres from '@renderer/entities/genres'
+import TopMovies from '@renderer/entities/top-movies'
 import { IconsSVG } from '@renderer/shared/assets'
+import Scrollable from '@renderer/shared/ui/Scrollable'
 import { tokenInstance } from '@renderer/shared/utils'
 import { memo } from 'react'
 import { useLocation } from 'react-router'
@@ -23,7 +26,24 @@ const RightSidebar = () => {
         </div>
         <div className="w-full h-[80vh]">
           {/* start code here */}
-          <Card className="w-full h-[80vh] bg-success" isBlurred />
+          <Card className="w-full h-[80vh] p-3 bg-success" isBlurred>
+            <Scrollable
+              title="Top Rated"
+              icon={<IconsSVG.arrow />}
+              iconText="Swipe"
+              className="flex justify-start gap-6 w-full overflow-auto scrollbar-hide"
+            >
+              <TopMovies />
+            </Scrollable>
+            <Scrollable
+              title="Genres"
+              icon={<IconsSVG.arrow />}
+              iconText="Swipe"
+              className="flex justify-start gap-6 w-full overflow-auto scrollbar-hide"
+            >
+              <Genres />
+            </Scrollable>
+          </Card>
         </div>
       </div>
     </div>

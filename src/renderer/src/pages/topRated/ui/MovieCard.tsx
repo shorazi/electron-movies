@@ -16,13 +16,13 @@ const MovieCard = ({ movieInfo }: { movieInfo: IMovie }) => {
           width={250}
           alt={movieInfo?.name}
           className="object-cover"
-          src={movieInfo?.img}
-          height={350}
+          src={movieInfo?.poster?.url}
+          height={300}
         />
       </CardBody>
       <CardFooter className="flex flex-col justify-center items-start">
         <h1 className="text-[#fff] text-[25px]">{movieInfo?.name}</h1>
-        <p className="text-[#fff]">{movieInfo?.date}</p>
+        <p className="text-[#fff]">{movieInfo?.year}</p>
       </CardFooter>
     </Card>
   )

@@ -1,5 +1,6 @@
 import { Button, Input, Link } from '@nextui-org/react'
 import useAuth from '@renderer/shared/api/auth/useAuth'
+import { routesPaths } from '@renderer/shared/constants'
 import { tokenInstance } from '@renderer/shared/utils'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router'
@@ -10,7 +11,7 @@ const SignIn = ({ handleTabSelect }: { handleTabSelect: (value: string) => void 
     password: 'threesome'
   })
   const navigate = useNavigate()
-  const { isLoading: isSignInLoading, auth: signInAuth } = useAuth('/auth/login')
+  const { isLoading: isSignInLoading, auth: signInAuth } = useAuth(routesPaths.signIn)
 
   const handleSubmitSignIn = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()

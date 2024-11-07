@@ -6,13 +6,15 @@ const Scrollable = ({
   icon,
   iconText,
   className = '',
-  style = {}
+  style = {},
+  title = ''
 }: {
   children: ReactNode
   icon: ReactNode
   iconText?: string
   className?: string
   style?: CSSProperties
+  title?: string
 }) => {
   const scrollRef = useRef<HTMLDivElement>(null)
 
@@ -24,8 +26,11 @@ const Scrollable = ({
   }
   return (
     <>
-      <div ref={scrollRef} style={style} className={`${className}`}>
-        {children}
+      <div className="flex flex-col gap-5">
+        {title && <h1 className="text-[24px] font-bold">{title}</h1>}
+        <div ref={scrollRef} style={style} className={`${className}`}>
+          {children}
+        </div>
       </div>
       <div className="flex justify-center">
         <Button color="primary" variant="light" onClick={handleArrow} endContent={icon}>

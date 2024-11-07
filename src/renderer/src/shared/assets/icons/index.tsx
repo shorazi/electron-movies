@@ -14,6 +14,7 @@ import search from './search.svg?react'
 import settings from './settings.svg?react'
 import user from './user.svg?react'
 import arrow from './arrow.svg?react'
+import leftArrow from './Left.svg?react'
 export const IconsSVG = {
   add,
   bell,
@@ -28,5 +29,6 @@ export const IconsSVG = {
   discover,
   logout,
   settings,
-  arrow
+  arrow,
+  leftArrow
 }
