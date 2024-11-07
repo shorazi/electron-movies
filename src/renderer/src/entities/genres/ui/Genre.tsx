@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router'
 import { useSearchParams } from 'react-router-dom'
 import { genres } from '../lib'
 
-const Genres = () => {
+const Genres = ({ width = 210, height = 99 }: { width?: number; height?: number }) => {
   const navigate = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams()
 
@@ -28,8 +28,8 @@ const Genres = () => {
           </CardHeader>
           <Image
             removeWrapper
-            width={210}
-            height={99}
+            width={width}
+            height={height}
             alt="Card background"
             className="z-0 w-full h-full object-cover"
             src={genre?.img}

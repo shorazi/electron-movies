@@ -17,7 +17,7 @@ const SideBar = () => {
     }
   }
 
-  if (pathname === '/top-rated') return null
+  if (pathname.includes('/top-rated')) return null
   return (
     <div className="w-[235px] h-[95vh]">
       <div className="w-[235px] h-[95vh] flex flex-col justify-between items-center sticky pl-4">

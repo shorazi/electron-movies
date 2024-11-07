@@ -9,6 +9,7 @@ export const routesPaths = {
   movies: '/movies/search',
   moviesByName: '/movies/search/name'
 }
+export const api = import.meta.env.VITE_BASE_URL
 
 // registration - /auth/register
 // login - /auth/login

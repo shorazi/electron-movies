@@ -1,13 +1,18 @@
 import { Card, CardBody, CardFooter, Image } from '@nextui-org/react'
 import { IMovie } from '@renderer/widgets/layout/lib'
+import { useNavigate } from 'react-router'
 
 const MovieCard = ({ movieInfo }: { movieInfo: IMovie }) => {
+  const navigate = useNavigate()
   return (
     <Card
       key={movieInfo?.id}
       isBlurred
       isPressable
       className="w-[240px] flex-shrink-0 flex-grow-0 flex-auto rounded-b-none"
+      onClick={() => {
+        navigate(`/top-rated/${movieInfo?.id}`)
+      }}
     >
       <CardBody className="overflow-visible p-0">
         <Image

@@ -11,7 +11,7 @@ const RightSidebar = () => {
   const { getToken } = tokenInstance
   const { pathname } = useLocation()
 
-  if (pathname === '/top-rated') return null
+  if (pathname.includes('/top-rated')) return null
   return (
     <div className="w-[335px] h-[95vh]">
       <div className="w-[335px] sticky px-4 h-[95vh] flex flex-col justify-between items-center">

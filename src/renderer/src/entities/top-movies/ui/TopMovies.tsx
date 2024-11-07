@@ -2,7 +2,7 @@ import { Card, CardHeader, Image } from '@nextui-org/react'
 import { useMemo } from 'react'
 import { useNavigate } from 'react-router'
 import { useSearchParams } from 'react-router-dom'
-import { topMovies } from './top-movies'
+import { topMovies } from '../lib'
 
 const TopMovies = () => {
   const navigate = useNavigate()
@@ -27,13 +27,11 @@ const TopMovies = () => {
             <h4 className="text-white font-medium text-large">{movie?.title || 'Undefinded'}</h4>
           </CardHeader>
           <Image
-            // isZoomed
             removeWrapper
             width={210}
-            height={129}
+            height={99}
             alt="Card background"
             className="z-0 w-full h-full object-cover bg-black/40"
-            // src={top?.img}
             src={
               'https://image.openmoviedb.com/kinopoisk-images/1773646/85356576-893c-4ef7-86a5-23e37110f346/orig'
             }

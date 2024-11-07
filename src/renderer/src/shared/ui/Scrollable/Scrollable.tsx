@@ -25,7 +25,7 @@ const Scrollable = (props: IProps) => {
   } = props
   const scrollRef = useRef<HTMLDivElement>(null)
 
-  const handleArrow = () => {
+  const handleArrowNext = () => {
     const scrollAmount = 150
     if (scrollRef.current) {
       scrollRef.current.scrollLeft += scrollAmount
@@ -59,7 +59,7 @@ const Scrollable = (props: IProps) => {
                 isIconOnly
                 color="secondary"
                 variant="ghost"
-                onClick={handleArrow}
+                onClick={handleArrowNext}
                 children={<IconsSVG.next />}
               />
             </>
@@ -71,7 +71,7 @@ const Scrollable = (props: IProps) => {
       </div>
       {variantButton === 'default' ? (
         <div className="flex justify-center">
-          <Button color="primary" variant="light" onClick={handleArrow} endContent={icon}>
+          <Button color="primary" variant="light" onClick={handleArrowNext} endContent={icon}>
             {iconText}
           </Button>
         </div>
