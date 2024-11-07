@@ -1,4 +1,4 @@
-import { Button, Card } from '@nextui-org/react'
+import { Button } from '@nextui-org/react'
 import Genres from '@renderer/entities/genres'
 import TopMovies from '@renderer/entities/top-movies'
 import { IconsSVG } from '@renderer/shared/assets'
@@ -24,26 +24,22 @@ const RightSidebar = () => {
             <IconsSVG.user />
           </Button>
         </div>
-        <div className="w-full h-[80vh]">
+        <div className="w-full flex flex-col gap-7  h-[80vh]">
           {/* start code here */}
-          <Card className="w-full h-[80vh] p-3 bg-success" isBlurred>
-            <Scrollable
-              title="Top Rated"
-              icon={<IconsSVG.arrow />}
-              iconText="Swipe"
-              className="flex justify-start gap-6 w-full overflow-auto scrollbar-hide"
-            >
-              <TopMovies />
-            </Scrollable>
-            <Scrollable
-              title="Genres"
-              icon={<IconsSVG.arrow />}
-              iconText="Swipe"
-              className="flex justify-start gap-6 w-full overflow-auto scrollbar-hide"
-            >
-              <Genres />
-            </Scrollable>
-          </Card>
+          <Scrollable
+            title="Top Rated"
+            variantButton="secondary"
+            className="flex justify-start gap-6 w-full overflow-auto scrollbar-hide mb-2"
+          >
+            <TopMovies />
+          </Scrollable>
+          <Scrollable
+            title="Genres"
+            variantButton="secondary"
+            className="flex justify-start gap-6 w-full overflow-auto scrollbar-hide"
+          >
+            <Genres />
+          </Scrollable>
         </div>
       </div>
     </div>

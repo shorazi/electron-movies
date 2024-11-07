@@ -1,8 +1,8 @@
 import { Card, CardHeader, Image } from '@nextui-org/react'
-import { genres } from './genres'
 import { useMemo } from 'react'
 import { useNavigate } from 'react-router'
 import { useSearchParams } from 'react-router-dom'
+import { genres } from '../lib'
 
 const Genres = () => {
   const navigate = useNavigate()
@@ -29,7 +29,7 @@ const Genres = () => {
           <Image
             removeWrapper
             width={210}
-            height={99} 
+            height={99}
             alt="Card background"
             className="z-0 w-full h-full object-cover"
             src={genre?.img}
@@ -38,7 +38,7 @@ const Genres = () => {
       )
     })
   }, [])
-  return <>{genreParser}</>
+  return genreParser
 }
 
 export default Genres
