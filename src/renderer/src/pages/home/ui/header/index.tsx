@@ -1,5 +1,5 @@
-import { Button, Tab, Tabs } from '@nextui-org/react'
-import { IconsSVG } from '@renderer/shared/assets'
+import { Tab, Tabs } from '@nextui-org/react'
+import SearchModal from '@renderer/widgets/searchbar'
 import { memo } from 'react'
 
 const Header = () => {
@@ -10,13 +10,7 @@ const Header = () => {
         <Tab title="TV Shows" />
         <Tab title="Anime" />
       </Tabs>
-      <Button className="w-64 flex justify-between" variant="flat" color="secondary">
-        <span className="flex gap-3">
-          <IconsSVG.search />
-          Search
-        </span>
-        <IconsSVG.filter />
-      </Button>
+      <SearchModal />
     </div>
   )
 }
