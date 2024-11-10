@@ -1,7 +1,17 @@
-import { Button, Image } from '@nextui-org/react'
+import {
+  Button,
+  Card,
+  CardBody,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+  Image
+} from '@nextui-org/react'
 import { useMovieById } from '@renderer/shared/api/movies'
 import { IconsSVG } from '@renderer/shared/assets'
 import { UIBody, UIBodyTitle } from '@renderer/shared/ui'
+import Error from '@renderer/shared/ui/Error'
 import Loader from '@renderer/shared/ui/Loader'
 import { useNavigate, useParams } from 'react-router'
 
@@ -9,15 +19,17 @@ const MovieById = () => {
   const navigate = useNavigate()
   const { id } = useParams()
   const { movie, isLoading, error } = useMovieById(id!)
-  if (error) return <div>{error?.message}</div>
+
+  if (error) return <Error error={error} />
   if (isLoading) return <Loader />
+
   return (
     <div className="relative w-full h-full">
       {/* Background Image */}
       <Image
         width="100%"
         height="100vh"
-        src={movie?.backdrop?.url}
+        src={movie?.backdrop?.url || movie?.poster?.url}
         alt={`${movie?.name}`}
         className="fixed object-cover z-0 m-0 p-0 rounded-none right-0 left-0 top-0"
       />
@@ -31,7 +43,7 @@ const MovieById = () => {
       ></div>
 
       {/* Foreground Content */}
-      <div className="relative z-10 w-full flex flex-col gap-10 p-8">
+      <div className="relative z-10 w-full flex flex-col gap-10 p-8 justify-center h-full">
         {/* Navigation */}
         <div className="flex items-center gap-3 w-full">
           <Button isIconOnly variant="flat" type="button" onClick={() => navigate('/')}>
@@ -40,14 +52,46 @@ const MovieById = () => {
           <UIBody>Back home</UIBody>
         </div>
 
-        {/* Movie Title */}
-        <div>
-          <UIBodyTitle>{movie?.name!}</UIBodyTitle>
-        </div>
-
-        {/* Movie Description */}
-        <div>
-          <UIBody>{movie?.description!}</UIBody>
+        <div className="flex gap-2 justify-between">
+          <div className="flex flex-col gap-6 w-full max-w-[800px]">
+            {/* Movie Title */}
+            <UIBodyTitle>{movie?.name!}</UIBodyTitle>
+            {/* Movie Description */}
+            <UIBody>{movie?.description!}</UIBody>
+            <div>
+              <Dropdown>
+                <DropdownTrigger>
+                  <Button startContent={<IconsSVG.addSmall />} variant="flat" color="primary">
+                    Wishlist
+                  </Button>
+                </DropdownTrigger>
+                <DropdownMenu aria-label="Static Actions">
+                  <DropdownItem variant="light" color="primary" className="hover:bg-[green]">
+                    Просмотрено
+                  </DropdownItem>
+                  <DropdownItem color="warning">Отложено</DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+            </div>
+          </div>
+          <Card
+            key={movie?.id}
+            isBlurred
+            isPressable
+            className="w-[240px] h-[300px] flex-shrink-0 flex-grow-0 flex-auto"
+          >
+            <CardBody className="overflow-visible p-0">
+              <Image
+                isZoomed
+                loading="lazy"
+                width={250}
+                alt={movie?.name}
+                className="object-cover h-full"
+                src={movie?.poster?.url}
+                height={300}
+              />
+            </CardBody>
+          </Card>
         </div>
       </div>
     </div>

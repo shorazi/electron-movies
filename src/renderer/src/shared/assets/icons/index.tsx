@@ -15,6 +15,7 @@ import settings from './settings.svg?react'
 import user from './user.svg?react'
 import arrow from './arrow.svg?react'
 import leftArrow from './Left.svg?react'
+import addSmall from './add-small.svg?react'
 export const IconsSVG = {
   add,
   bell,
@@ -30,5 +31,6 @@ export const IconsSVG = {
   logout,
   settings,
   arrow,
-  leftArrow
+  leftArrow,
+  addSmall
 }
