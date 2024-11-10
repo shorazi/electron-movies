@@ -1,5 +1,5 @@
 import { Button, Input, Link } from '@nextui-org/react'
-import useAuth from '@renderer/shared/api/auth/useAuth'
+import useAuth from '@renderer/shared/api/auth'
 import { routesPaths } from '@renderer/shared/constants'
 import { ChangeEvent, FormEvent, useState } from 'react'
 

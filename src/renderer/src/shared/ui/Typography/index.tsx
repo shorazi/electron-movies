@@ -1,5 +1,5 @@
 const UIBody = (props: { children: string }) => (
-  <h1 className="text-3xl font-bold">{props.children}</h1>
+  <h1 className="text-2xl font-bold">{props.children}</h1>
 )
 
 const UIBodyTitle = (props: { children: string }) => (
