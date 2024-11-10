@@ -1,3 +1,4 @@
-import useMovies from './useMovies'
 import useMovieById from './useMovieById'
-export { useMovies, useMovieById }
+import useMovies from './useMovies'
+import useSearchMovies from './useSearchMovies'
+export { useMovieById, useMovies, useSearchMovies }

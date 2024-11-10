@@ -12,6 +12,16 @@ export const PathData = {
     path: '/top-rated',
     Icon: 'celebrities'
   },
+  genres: {
+    name: 'Genres',
+    path: '/genres',
+    Icon: 'celebrities'
+  },
+  profile: {
+    name: 'Profile',
+    path: '/profile',
+    Icon: 'celebrities'
+  },
   signout: {
     name: 'Sing Out',
     path: '/authorization',

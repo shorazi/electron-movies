@@ -1,12 +1,12 @@
 import { Button } from '@nextui-org/react'
 import { IconsSVG } from '@renderer/shared/assets'
+import { pagesToHide } from '@renderer/shared/constants'
 import { tokenInstance } from '@renderer/shared/utils'
 import { memo } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router'
 import { PathData } from '../../lib'
-import { pagesToHide } from '@renderer/shared/constants'
 
-const { home, toprated, signout } = PathData
+const { home, toprated, signout, genres, profile } = PathData
 
 const SideBar = () => {
   const navigate = useNavigate()
@@ -24,8 +24,12 @@ const SideBar = () => {
     <div className="w-[235px] h-[95vh]">
       <div className="w-[235px] h-[95vh] flex flex-col justify-between items-center sticky pl-4">
         <div className="w-full h-[10vh] flex justify-center items-center">
-          {/* <ImagesSVG.logo /> */}
-          {/* <p>FilmFinder</p> */}
+          <p className="font-bold text-[42px] text-success">
+            F<span className="text-secondary">i</span>
+            lmF
+            <span className="text-red-600">i</span>
+            nder
+          </p>
         </div>
         <div className="w-full h-[80vh] flex flex-col justify-between items-center">
           <div className="w-full flex flex-col justify-start items-start gap-4">
@@ -61,12 +65,25 @@ const SideBar = () => {
                 startContent={<IconsSVG.discover />}
                 fullWidth
                 color="secondary"
-                variant={toprated.path === pathname ? 'flat' : 'ghost'}
-                children={toprated.name}
+                variant={genres.path === pathname ? 'flat' : 'ghost'}
+                children={genres.name}
                 size="lg"
                 type="submit"
                 onClick={() => {
-                  handleNavigate(toprated.path)
+                  handleNavigate(genres.path)
+                }}
+                className="flex justify-start items-center text-primary"
+              />
+              <Button
+                startContent={<IconsSVG.user />}
+                fullWidth
+                color="secondary"
+                variant={profile.path === pathname ? 'flat' : 'ghost'}
+                children={profile.name}
+                size="lg"
+                type="submit"
+                onClick={() => {
+                  handleNavigate(profile.path)
                 }}
                 className="flex justify-start items-center text-primary"
               />
