@@ -8,6 +8,7 @@ import Loader from '@renderer/shared/ui/Loader'
 import useInfiniteScrolling from '@renderer/shared/hooks'
 import ScrollSpinner from './ScrollSpinner'
 import { useMovies } from '@renderer/shared/api/movies'
+import Error from '@renderer/shared/ui/Error'
 
 const TopRated = () => {
   const navigate = useNavigate()
@@ -15,7 +16,7 @@ const TopRated = () => {
   const { handleLoaderRef } = useInfiniteScrolling(setSize, size, isValidating, isLastPage)
 
   if (isLoading) return <Loader />
-  if (error) return <div>{error?.message}</div>
+  if (error) return <Error error={error} />
 
   return (
     <div className="w-full flex p-8 flex-col gap-10">
