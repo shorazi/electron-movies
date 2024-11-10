@@ -49,11 +49,14 @@ const SearchModal = () => {
               <ModalHeader className="flex flex-col gap-1">
                 <form className="w-full" onSubmit={handleSearch}>
                   <Input
+                    // size="sm"
+                    color="success"
+                    classNames={{
+                      base: 'bg-background2 rounded-md'
+                    }}
                     name="searchInput"
                     startContent={<IconsSVG.search />}
                     placeholder="Search"
-                    variant="underlined"
-                    color="success"
                     autoFocus
                   />
                 </form>
@@ -87,16 +90,41 @@ const SearchModal = () => {
                 </div>
                 <div>
                   <Select
-                    variant="underlined"
+                    size="sm"
                     color="success"
-                    label="Select a genre"
-                    // className="max-w-xs"
+                    label="Genre"
                     classNames={{
-                      base: 'text-red bg-red'
+                      base: 'bg-background2 rounded-md',
+                      trigger: 'bg-background2',
+                      popoverContent: 'bg-background2',
+                      listbox: 'text-primary'
                     }}
                   >
                     {genres?.map((item) => <SelectItem key={item.id}>{item.name}</SelectItem>)}
                   </Select>
+                  <Select
+                    size="sm"
+                    color="success"
+                    label="Rating"
+                    classNames={{
+                      base: 'bg-background2 rounded-md',
+                      trigger: 'bg-background2',
+                      popoverContent: 'bg-background2',
+                      listbox: 'text-primary'
+                    }}
+                  >
+                    {[1, 2, 3, 4, 5]?.map((item) => (
+                      <SelectItem key={'rating' + item}>{item}</SelectItem>
+                    ))}
+                  </Select>
+                  <Input
+                    size="sm"
+                    color="success"
+                    label="Year"
+                    classNames={{
+                      base: 'bg-background2 rounded-md'
+                    }}
+                  />
                 </div>
               </ModalBody>
               {totalPages > 1 && (
