@@ -1,15 +1,15 @@
 import { Button, Card, CardHeader, Image } from '@nextui-org/react'
-import { IconsSVG, imagesPNG } from '@renderer/shared/assets'
+import { IconsSVG } from '@renderer/shared/assets'
 
 interface IProps {
   title?: string
-  previousFnc?: () => void
-  nextFnc?: () => void
-  imageSrc?: string
+  previousClick?: () => void
+  nextClick?: () => void
+  srcURL?: string
 }
 
 const UIMainCard = (props: IProps) => {
-  const { imageSrc = imagesPNG.main_image, nextFnc, previousFnc, title = 'The Crown' } = props
+  const { previousClick, nextClick, srcURL, title } = props
 
   return (
     <Card isBlurred shadow="sm" className="w-full h-[250px] rounded-lg">
@@ -20,11 +20,16 @@ const UIMainCard = (props: IProps) => {
             isIconOnly
             variant="flat"
             color="secondary"
-            onClick={() => previousFnc && previousFnc()}
+            onClick={() => previousClick && previousClick()}
           >
             <IconsSVG.previous />
           </Button>
-          <Button isIconOnly variant="flat" color="secondary" onClick={() => nextFnc && nextFnc()}>
+          <Button
+            isIconOnly
+            variant="flat"
+            color="secondary"
+            onClick={() => nextClick && nextClick()}
+          >
             <IconsSVG.next />
           </Button>
         </div>
@@ -37,14 +42,14 @@ const UIMainCard = (props: IProps) => {
             children="Watchlist"
           />
           <div className="w-16 h-7 bg-background2 rounded-md"></div>
-          <Button className="text-background2" children="Watch Now" color="success" />
+          <Button className="text-background2" children="More Info" color="success" />
         </div>
       </CardHeader>
       <Image
         removeWrapper
         alt="Card background"
         className="z-0 w-full h-full object-cover"
-        src={imageSrc}
+        src={srcURL}
       />
     </Card>
   )
