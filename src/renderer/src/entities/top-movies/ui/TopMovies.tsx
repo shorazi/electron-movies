@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router'
 import { useSearchParams } from 'react-router-dom'
 import { topMovies } from '../lib'
 
-const TopMovies = () => {
+const TopMovies = ({ width = 210, height = 99 }: { width?: number; height?: number }) => {
   const navigate = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams()
 
@@ -20,16 +20,16 @@ const TopMovies = () => {
           key={index}
           isBlurred
           isPressable
-          className="w-[210px] h-[129px] flex-shrink-0 flex-grow-0 flex-auto"
+          className="w-[210px] flex-shrink-0 flex-grow-0 flex-auto"
           onClick={() => handleFindMovie(movie?.title as string)}
         >
-          <CardHeader className="w-[210px] h-[129px] absolute z-10 top-1 flex-col !items-start">
+          <CardHeader className="absolute z-10 top-1 flex-col !items-start">
             <h4 className="text-white font-medium text-large">{movie?.title || 'Undefinded'}</h4>
           </CardHeader>
           <Image
             removeWrapper
-            width={210}
-            height={99}
+            width={width}
+            height={height}
             alt="Card background"
             className="z-0 w-full h-full object-cover bg-black/40"
             src={
@@ -39,7 +39,7 @@ const TopMovies = () => {
         </Card>
       )
     })
-  }, [])
+  }, [topMovies])
   return <>{movieParser}</>
 }
 

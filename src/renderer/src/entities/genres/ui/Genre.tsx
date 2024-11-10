@@ -37,7 +37,7 @@ const Genres = ({ width = 210, height = 99 }: { width?: number; height?: number 
         </Card>
       )
     })
-  }, [])
+  }, [genres])
   return genreParser
 }
 

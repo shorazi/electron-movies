@@ -10,12 +10,15 @@ export default defineConfig({
   preload: {
     plugins: [externalizeDepsPlugin()]
   },
+
   renderer: {
+    base: './',
     resolve: {
       alias: {
         '@renderer': resolve('src/renderer/src')
       }
     },
+
     plugins: [
       react(),
       svgr({

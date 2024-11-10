@@ -5,12 +5,17 @@ import MovieCard from './MovieCard'
 import { UIBody, UIBodyTitle } from '@renderer/shared/ui'
 import Scrollable from '@renderer/shared/ui/Scrollable'
 import Loader from '@renderer/shared/ui/Loader'
-import useMovies from '@renderer/shared/api/movies/AllMovies'
+import useInfiniteScrolling from '@renderer/shared/hooks'
+import ScrollSpinner from './ScrollSpinner'
+import { useMovies } from '@renderer/shared/api/movies'
 
 const TopRated = () => {
   const navigate = useNavigate()
-  const { movies, isLoading } = useMovies()
+  const { movies, isLoading, isValidating, setSize, size, error, isLastPage } = useMovies()
+  const { handleLoaderRef } = useInfiniteScrolling(setSize, size, isValidating, isLastPage)
+
   if (isLoading) return <Loader />
+  if (error) return <div>{error?.message}</div>
 
   return (
     <div className="w-full flex p-8 flex-col gap-10">
@@ -28,9 +33,13 @@ const TopRated = () => {
         iconText="Swipe"
         className="flex flex-1 justify-start gap-7 w-full overflow-auto scrollbar-hide p-3"
       >
-        {movies?.docs?.map((movie) => {
-          return <MovieCard key={movie.id} movieInfo={movie} />
+        {movies?.map((data) => {
+          return data?.docs?.map((movie) => {
+            return <MovieCard key={movie.id} movieInfo={movie} />
+          })
         })}
+        <div ref={handleLoaderRef}></div>
+        <ScrollSpinner isValidating={isValidating} />
       </Scrollable>
     </div>
   )
