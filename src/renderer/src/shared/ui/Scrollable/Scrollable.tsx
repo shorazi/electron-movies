@@ -11,6 +11,7 @@ interface IProps {
   style?: CSSProperties
   title?: string
   variantButton?: 'default' | 'secondary'
+  seeMoreContent?: ReactNode
 }
 
 const Scrollable = (props: IProps) => {
@@ -21,11 +22,12 @@ const Scrollable = (props: IProps) => {
     className = '',
     style = {},
     title = '',
-    variantButton = 'default'
+    variantButton = 'default',
+    seeMoreContent = ''
   } = props
   const scrollRef = useRef<HTMLDivElement>(null)
 
-  const handleArrow = () => {
+  const handleArrowNext = () => {
     const scrollAmount = 150
     if (scrollRef.current) {
       scrollRef.current.scrollLeft += scrollAmount
@@ -41,29 +43,32 @@ const Scrollable = (props: IProps) => {
 
   return (
     <>
-      <div className="flex flex-col gap-6">
-        <div className="flex justify-start items-center gap-2">
-          {title && <UIBody>{title}</UIBody>}
-          {variantButton === 'secondary' ? (
-            <>
-              <Button
-                size="sm"
-                isIconOnly
-                color="secondary"
-                variant="ghost"
-                onClick={handleArrowPrevious}
-                children={<IconsSVG.previous />}
-              />
-              <Button
-                size="sm"
-                isIconOnly
-                color="secondary"
-                variant="ghost"
-                onClick={handleArrow}
-                children={<IconsSVG.next />}
-              />
-            </>
-          ) : null}
+      <div className="flex flex-col gap-6 w-full">
+        <div className="flex justify-between items-center gap-2 w-full">
+          <div className="flex justify-center items-center gap-1">
+            {title && <UIBody>{title}</UIBody>}
+            {variantButton === 'secondary' ? (
+              <>
+                <Button
+                  size="sm"
+                  isIconOnly
+                  color="secondary"
+                  variant="ghost"
+                  onClick={handleArrowPrevious}
+                  children={<IconsSVG.previous />}
+                />
+                <Button
+                  size="sm"
+                  isIconOnly
+                  color="secondary"
+                  variant="ghost"
+                  onClick={handleArrowNext}
+                  children={<IconsSVG.next />}
+                />
+              </>
+            ) : null}
+          </div>
+          {seeMoreContent}
         </div>
         <div ref={scrollRef} style={style} className={className}>
           {children}
@@ -71,7 +76,7 @@ const Scrollable = (props: IProps) => {
       </div>
       {variantButton === 'default' ? (
         <div className="flex justify-center">
-          <Button color="primary" variant="light" onClick={handleArrow} endContent={icon}>
+          <Button color="primary" variant="light" onClick={handleArrowNext} endContent={icon}>
             {iconText}
           </Button>
         </div>

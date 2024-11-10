@@ -14,6 +14,8 @@ const SWRProvider = ({ children }: { children: ReactNode }) => {
           })
         },
         onSuccess(data) {
+          if (!data) return
+
           toast.success(data?.message, { position: 'top-right' })
         },
         revalidateOnReconnect: false,

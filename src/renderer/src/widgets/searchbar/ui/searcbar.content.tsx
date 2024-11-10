@@ -15,7 +15,7 @@ import {
   useDisclosure
 } from '@nextui-org/react'
 import { genres } from '@renderer/entities/genres/lib'
-import { topMovies } from '@renderer/entities/top-movies/ui/top-movies'
+import { topMovies } from '@renderer/entities/top-movies/lib'
 import { IconsSVG, imagesPNG } from '@renderer/shared/assets'
 import { UIBody } from '@renderer/shared/ui'
 import { FormEvent, memo } from 'react'

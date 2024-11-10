@@ -2,14 +2,16 @@ import { Button } from '@nextui-org/react'
 import { IconsSVG } from '@renderer/shared/assets'
 import { tokenInstance } from '@renderer/shared/utils'
 import { memo } from 'react'
-import { useLocation, useNavigate } from 'react-router'
+import { useLocation, useNavigate, useParams } from 'react-router'
 import { PathData } from '../../lib'
+import { pagesToHide } from '@renderer/shared/constants'
 
 const { home, toprated, signout } = PathData
 
 const SideBar = () => {
   const navigate = useNavigate()
   const { pathname } = useLocation()
+  const { id } = useParams()
 
   const handleNavigate = (navigatePathname: string) => {
     if (pathname !== navigatePathname) {
@@ -17,7 +19,7 @@ const SideBar = () => {
     }
   }
 
-  if (pathname === '/top-rated') return null
+  if (pathname.includes(pagesToHide[pathname]) || pathname.includes(String(id))) return null
   return (
     <div className="w-[235px] h-[95vh]">
       <div className="w-[235px] h-[95vh] flex flex-col justify-between items-center sticky pl-4">
