@@ -1,22 +1,16 @@
-import {
-  Button,
-  Card,
-  CardBody,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-  Image
-} from '@nextui-org/react'
+import { Button, Card, CardBody, Image } from '@nextui-org/react'
+import WishlistButton from '@renderer/entities/wishlistButton/ui/WishlistButton'
 import { useMovieById } from '@renderer/shared/api/movies'
 import { IconsSVG } from '@renderer/shared/assets'
 import { UIBody, UIBodyTitle } from '@renderer/shared/ui'
 import Error from '@renderer/shared/ui/Error'
 import Loader from '@renderer/shared/ui/Loader'
+import { tokenInstance } from '@renderer/shared/utils'
 import { useNavigate, useParams } from 'react-router'
 
 const MovieById = () => {
   const navigate = useNavigate()
+  const { getToken } = tokenInstance
   const { id } = useParams()
   const { movie, isLoading, error } = useMovieById(id!)
 
@@ -65,19 +59,18 @@ const MovieById = () => {
             {/* Movie Description */}
             <UIBody>{movie?.description!}</UIBody>
             <div>
-              <Dropdown>
-                <DropdownTrigger>
-                  <Button startContent={<IconsSVG.addSmall />} variant="flat" color="primary">
-                    Wishlist
-                  </Button>
-                </DropdownTrigger>
-                <DropdownMenu aria-label="Static Actions">
-                  <DropdownItem variant="light" color="primary" className="hover:bg-[green]">
-                    Просмотрено
-                  </DropdownItem>
-                  <DropdownItem color="warning">Отложено</DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
+              <WishlistButton
+                requestWatched={{
+                  movie_id: movie?.id,
+                  user_id: getToken()?.user_id,
+                  status: 'Просмотрено'
+                }}
+                requestPending={{
+                  movie_id: movie?.id,
+                  user_id: getToken()?.user_id,
+                  status: 'Отложено'
+                }}
+              />
             </div>
           </div>
           <Card

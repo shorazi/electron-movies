@@ -7,10 +7,11 @@ import Loader from '@renderer/shared/ui/Loader'
 import { useNavigate } from 'react-router'
 
 import useWishlist from '@renderer/shared/api/movies/useWishlist'
+import Scrollable from '@renderer/shared/ui/Scrollable'
+import MovieCard from './MovieCard'
 const WishList = () => {
   const navigate = useNavigate()
   const { wishlist, error, isLoading } = useWishlist()
-  console.log(wishlist)
 
   if (isLoading) return <Loader />
   if (error) return <Error error={error} />
@@ -39,37 +40,51 @@ const WishList = () => {
           }}
         >
           <Tab
-            key="photos"
+            key="watched"
             title={
               <div className="flex items-center space-x-2">
                 <span>Просмотрено</span>
               </div>
             }
-          />
+          >
+            {!wishlist?.profile?.watched_movies?.length ? (
+              <div>No data</div>
+            ) : (
+              <Scrollable
+                icon={<IconsSVG.arrow />}
+                iconText="Swipe"
+                className="flex flex-1 justify-start gap-7 w-full overflow-auto scrollbar-hide p-3"
+              >
+                {wishlist?.profile?.watched_movies?.map((movie) => {
+                  return <MovieCard key={movie?.id} movieInfo={movie} />
+                })}
+              </Scrollable>
+            )}
+          </Tab>
           <Tab
-            key="music"
+            key="pending"
             title={
               <div className="flex items-center space-x-2">
                 <span>Отложено</span>
               </div>
             }
-          />
+          >
+            {!wishlist?.profile?.pending_movies?.length ? (
+              <div>No data</div>
+            ) : (
+              <Scrollable
+                icon={<IconsSVG.arrow />}
+                iconText="Swipe"
+                className="flex flex-1 justify-start gap-7 w-full overflow-auto scrollbar-hide p-3"
+              >
+                {wishlist?.profile?.pending_movies?.map((movie) => {
+                  return <MovieCard key={movie?.id} movieInfo={movie} />
+                })}
+              </Scrollable>
+            )}
+          </Tab>
         </Tabs>
       </div>
-
-      {/* <Scrollable
-        icon={<IconsSVG.arrow />}
-        iconText="Swipe"
-        className="flex flex-1 justify-start gap-7 w-full overflow-auto scrollbar-hide p-3"
-      >
-        {movies?.map((data) => {
-          return data?.docs?.map((movie) => {
-            return <MovieCard key={movie.id} movieInfo={movie} />
-          })
-        })}
-        <div ref={handleLoaderRef}></div>
-        <ScrollSpinner isValidating={isValidating} />
-      </Scrollable> */}
     </div>
   )
 }

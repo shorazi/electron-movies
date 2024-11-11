@@ -23,7 +23,7 @@ const RightSidebar = () => {
           <Button isIconOnly variant="flat" color="secondary">
             <IconsSVG.bell />
           </Button>
-          <div className="text-[18px] font-bold text-success">{getToken()}</div>
+          <div className="text-[18px] font-bold text-success">{getToken()?.username}</div>
           <Button isIconOnly variant="flat" color="secondary">
             <IconsSVG.user />
           </Button>
