@@ -20,10 +20,10 @@ const RightSidebar = () => {
     <div className="w-[335px] h-[95vh]">
       <div className="w-[335px] sticky px-4 h-[95vh] flex flex-col justify-between items-center">
         <div className="w-full h-[10vh] flex justify-between items-center">
-          <Button isIconOnly variant="flat" color="secondary">
+          {/* <Button isIconOnly variant="flat" color="secondary">
             <IconsSVG.bell />
-          </Button>
-          <div className="text-[18px] font-bold text-success">{getToken()}</div>
+          </Button> */}
+          <div className="text-[18px] font-bold text-success">{getToken()?.username}</div>
           <Button isIconOnly variant="flat" color="secondary">
             <IconsSVG.user />
           </Button>

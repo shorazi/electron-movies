@@ -20,7 +20,7 @@ const SignIn = ({ handleTabSelect }: { handleTabSelect: (value: string) => void 
       password: e.target['password'].value
     })
     if (data?.username) {
-      tokenInstance.setToken(data?.username)
+      tokenInstance.setToken(data)
       navigate('/')
     }
   }

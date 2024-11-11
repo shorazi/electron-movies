@@ -1,5 +1,7 @@
 import { Button, Card, CardHeader, Image } from '@nextui-org/react'
+import WishlistButton from '@renderer/entities/wishlistButton/ui/WishlistButton'
 import { IconsSVG } from '@renderer/shared/assets'
+import { tokenInstance } from '@renderer/shared/utils'
 import { useNavigate } from 'react-router'
 
 interface IProps {
@@ -11,6 +13,7 @@ interface IProps {
 }
 
 const UIMainCard = (props: IProps) => {
+  const { getToken } = tokenInstance
   const { previousClick, nextClick, srcURL, title, id } = props
   const navigate = useNavigate()
 
@@ -37,12 +40,17 @@ const UIMainCard = (props: IProps) => {
           </Button>
         </div>
         <div className="w-full flex justify-between items-center">
-          <Button
-            className="text-primary"
-            variant="flat"
-            color="secondary"
-            startContent={<IconsSVG.add />}
-            children="Watchlist"
+          <WishlistButton
+            requestWatched={{
+              movie_id: id,
+              user_id: getToken()?.user_id,
+              status: 'Просмотрено'
+            }}
+            requestPending={{
+              movie_id: id,
+              user_id: getToken()?.user_id,
+              status: 'Отложено'
+            }}
           />
           {/* <div className="w-16 h-7 bg-background2 rounded-md"></div> */}
           <Button
