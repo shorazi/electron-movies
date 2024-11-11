@@ -1,2 +1,2 @@
-import TopRated from './ui/topRated.content'
-export default TopRated
+import WishList from './ui/wishlist.content'
+export default WishList

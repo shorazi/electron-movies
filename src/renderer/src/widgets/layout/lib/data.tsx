@@ -12,6 +12,11 @@ export const PathData = {
     path: '/top-rated',
     Icon: 'celebrities'
   },
+  wishList: {
+    name: 'Wishlist',
+    path: '/wish-list',
+    Icon: 'celebrities'
+  },
   genres: {
     name: 'Genres',
     path: '/genres',

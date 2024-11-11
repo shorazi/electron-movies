@@ -21,7 +21,7 @@ const Genres = ({ width = 210, height = 99 }: { width?: number; height?: number 
           isBlurred
           isPressable
           className="w-[210px] flex-shrink-0 flex-grow-0 flex-auto"
-          onClick={() => handleFindGenre(genre?.name)}
+          onPress={() => handleFindGenre(genre?.name)}
         >
           <CardHeader className="absolute z-10 top-1 flex-col !items-start">
             <h4 className="text-white font-medium text-large">{genre?.name}</h4>

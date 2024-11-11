@@ -10,7 +10,7 @@ const MovieCard = ({ movieInfo }: { movieInfo: IMovie }) => {
       isBlurred
       isPressable
       className="w-[240px] flex-shrink-0 flex-grow-0 flex-auto rounded-b-none"
-      onClick={() => {
+      onPress={() => {
         navigate(`/top-rated/${movieInfo?.id}`)
       }}
     >

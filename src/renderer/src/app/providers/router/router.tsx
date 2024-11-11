@@ -4,10 +4,11 @@ import AllGenres from '@renderer/pages/genres'
 import HomePage from '@renderer/pages/home'
 import TopMovies from '@renderer/pages/topMovies'
 import TopRated from '@renderer/pages/topRated'
-import { createBrowserRouter } from 'react-router-dom'
+import WishList from '@renderer/pages/wishlist'
+import { createHashRouter } from 'react-router-dom'
 import ProtectedLayout from './ProtectedLayout'
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <ProtectedLayout />,
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: '/top-rated',
         element: <TopRated />
+      },
+      {
+        path: '/wish-list',
+        element: <WishList />
       },
       {
         path: '/top-rated/:id',

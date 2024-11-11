@@ -4,6 +4,7 @@ import { Navigate } from 'react-router'
 
 const ProtectedLayout = () => {
   const { getToken } = tokenInstance
+
   return getToken() ? <Layout /> : <Navigate to="/authorization" replace />
 }
 

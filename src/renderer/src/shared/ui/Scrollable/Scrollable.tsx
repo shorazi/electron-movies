@@ -55,6 +55,7 @@ const Scrollable = (props: IProps) => {
                   color="secondary"
                   variant="ghost"
                   onClick={handleArrowPrevious}
+                  type="submit"
                   children={<IconsSVG.previous />}
                 />
                 <Button
@@ -63,6 +64,7 @@ const Scrollable = (props: IProps) => {
                   color="secondary"
                   variant="ghost"
                   onClick={handleArrowNext}
+                  type="submit"
                   children={<IconsSVG.next />}
                 />
               </>
@@ -76,7 +78,13 @@ const Scrollable = (props: IProps) => {
       </div>
       {variantButton === 'default' ? (
         <div className="flex justify-center">
-          <Button color="primary" variant="light" onClick={handleArrowNext} endContent={icon}>
+          <Button
+            color="primary"
+            variant="light"
+            type="submit"
+            onClick={handleArrowNext}
+            endContent={icon}
+          >
             {iconText}
           </Button>
         </div>

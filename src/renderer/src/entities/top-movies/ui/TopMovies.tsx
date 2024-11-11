@@ -21,7 +21,7 @@ const TopMovies = ({ width = 210, height = 99 }: { width?: number; height?: numb
           isBlurred
           isPressable
           className="w-[210px] flex-shrink-0 flex-grow-0 flex-auto"
-          onClick={() => handleFindMovie(movie?.title as string)}
+          onPress={() => handleFindMovie(movie?.title as string)}
         >
           <CardHeader className="absolute z-10 top-1 flex-col !items-start">
             <h4 className="text-white font-medium text-large">{movie?.title || 'Undefinded'}</h4>

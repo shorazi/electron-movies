@@ -6,7 +6,7 @@ import { memo } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router'
 import { PathData } from '../../lib'
 
-const { home, toprated, signout, genres, profile } = PathData
+const { home, toprated, signout, genres, profile, wishList } = PathData
 
 const SideBar = () => {
   const navigate = useNavigate()
@@ -82,6 +82,19 @@ const SideBar = () => {
                 type="submit"
                 onClick={() => {
                   handleNavigate(profile.path)
+                }}
+                className="flex justify-start items-center text-primary"
+              />
+              <Button
+                startContent={<IconsSVG.celebrities />}
+                fullWidth
+                color="secondary"
+                variant={wishList.path === pathname ? 'flat' : 'ghost'}
+                children={wishList.name}
+                size="lg"
+                type="submit"
+                onClick={() => {
+                  handleNavigate(wishList.path)
                 }}
                 className="flex justify-start items-center text-primary"
               />

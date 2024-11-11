@@ -9,7 +9,7 @@ import Scrollable from '@renderer/shared/ui/Scrollable'
 import { useNavigate } from 'react-router'
 import { useSearchParams } from 'react-router-dom'
 import MovieCard from './MovieCard'
-import ScrollSpinner from './ScrollSpinner'
+import ScrollSpinner from '@renderer/shared/ui/ScrollSpinner'
 
 const TopRated = () => {
   const navigate = useNavigate()

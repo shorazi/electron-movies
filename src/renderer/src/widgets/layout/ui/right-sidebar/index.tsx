@@ -10,6 +10,7 @@ import { useLocation, useNavigate, useParams } from 'react-router'
 
 const RightSidebar = () => {
   const { getToken } = tokenInstance
+
   const { pathname } = useLocation()
   const { id } = useParams()
   const navigate = useNavigate()

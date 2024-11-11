@@ -16,7 +16,8 @@ export const routesPaths = {
 export const pagesToHide = {
   '/top-rated': '/top-rated',
   '/genres': '/genres',
-  '/top-movies': '/top-movies'
+  '/top-movies': '/top-movies',
+  '/wish-list': '/wish-list'
 }
 
 // registration - /auth/register
