@@ -3,16 +3,24 @@ import { IconsSVG, imagesPNG } from '@renderer/shared/assets'
 import { LocalMainMovies } from '@renderer/shared/lib'
 import { UIBody } from '@renderer/shared/ui'
 import UIMainCard from '@renderer/shared/ui/MainCard/MainCard'
+import { useState } from 'react'
 import { useLocalMainMovies } from '../helper'
 import Header from './header'
 
 const HomePage = () => {
-  const { nextClick, previousClick, tabIndex, underTopIndex } = useLocalMainMovies()
+  const { nextClick, previousClick, underTopIndex } = useLocalMainMovies()
+  const [tabIndex, setTabIndex] = useState(0)
+
+  // useEffect(() => {
+  //   console.log(tabIndex)
+  // }, [tabIndex])
+
   return (
     <div className="w-full h-[95vh] px-8 flex flex-col justify-between items-center">
-      <Header />
+      <Header setTabIndex={setTabIndex} />
       <div className="w-full h-[80vh] flex flex-col justify-start items-center gap-4">
         <UIMainCard
+          id={LocalMainMovies[tabIndex][underTopIndex].id}
           nextClick={nextClick}
           previousClick={previousClick}
           srcURL={LocalMainMovies[tabIndex][underTopIndex].poster.url}

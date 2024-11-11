@@ -52,10 +52,16 @@ const MovieById = () => {
           <UIBody>Back home</UIBody>
         </div>
 
-        <div className="flex gap-2 justify-between">
+        <div className="flex gap-1 justify-between">
           <div className="flex flex-col gap-6 w-full max-w-[800px]">
             {/* Movie Title */}
             <UIBodyTitle>{movie?.name!}</UIBodyTitle>
+            <p className="text-[28px] font-bold text-success">
+              {movie?.rating?.imdb && 'Рейтинг ' + movie?.rating?.imdb}
+            </p>
+            <p className="text-[24px] font-bold text-secondary">
+              {movie?.genres.length && 'Жанр: ' + movie?.genres.map((item) => ' ' + item.name)}
+            </p>
             {/* Movie Description */}
             <UIBody>{movie?.description!}</UIBody>
             <div>

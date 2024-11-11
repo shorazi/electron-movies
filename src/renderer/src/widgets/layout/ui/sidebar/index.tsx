@@ -26,9 +26,7 @@ const SideBar = () => {
         <div className="w-full h-[10vh] flex justify-center items-center">
           <p className="font-bold text-[42px] text-success">
             F<span className="text-secondary">i</span>
-            lmF
-            <span className="text-red-600">i</span>
-            nder
+            lmFinder
           </p>
         </div>
         <div className="w-full h-[80vh] flex flex-col justify-between items-center">

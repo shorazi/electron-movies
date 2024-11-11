@@ -16,7 +16,7 @@ interface MovieType {
 }
 
 export const LocalMainMovies: LocalMainMoviesType = {
-  0: [
+  1: [
     {
       alternative: 'The Crown',
       id: 924910,
@@ -42,7 +42,7 @@ export const LocalMainMovies: LocalMainMoviesType = {
       }
     }
   ],
-  1: [
+  0: [
     {
       id: 662359,
       name: 'Расплата',

@@ -1,9 +1,17 @@
 import { Card, CardHeader, Image } from '@nextui-org/react'
 import { IMovie } from '@renderer/widgets/layout/lib'
+import { memo } from 'react'
+import { useNavigate } from 'react-router'
 
 const CardMovie = ({ item }: { item: IMovie }) => {
+  const navigate = useNavigate()
   return (
-    <Card id={'id' + item?.id} className="h-[70px] bg-background2" isPressable>
+    <Card
+      onClick={() => navigate('/top-rated/' + item.id)}
+      id={'id' + item?.id}
+      className="h-[70px] bg-background2"
+      isPressable
+    >
       <CardHeader className="flex gap-3">
         <Image
           alt="nextui logo"
@@ -33,4 +41,4 @@ const CardMovie = ({ item }: { item: IMovie }) => {
   )
 }
 
-export default CardMovie
+export default memo(CardMovie)

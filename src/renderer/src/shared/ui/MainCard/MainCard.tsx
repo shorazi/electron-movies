@@ -1,7 +1,9 @@
 import { Button, Card, CardHeader, Image } from '@nextui-org/react'
 import { IconsSVG } from '@renderer/shared/assets'
+import { useNavigate } from 'react-router'
 
 interface IProps {
+  id: number
   title?: string
   previousClick?: () => void
   nextClick?: () => void
@@ -9,7 +11,8 @@ interface IProps {
 }
 
 const UIMainCard = (props: IProps) => {
-  const { previousClick, nextClick, srcURL, title } = props
+  const { previousClick, nextClick, srcURL, title, id } = props
+  const navigate = useNavigate()
 
   return (
     <Card isBlurred shadow="sm" className="w-full h-[250px] rounded-lg">
@@ -41,8 +44,13 @@ const UIMainCard = (props: IProps) => {
             startContent={<IconsSVG.add />}
             children="Watchlist"
           />
-          <div className="w-16 h-7 bg-background2 rounded-md"></div>
-          <Button className="text-background2" children="More Info" color="success" />
+          {/* <div className="w-16 h-7 bg-background2 rounded-md"></div> */}
+          <Button
+            className="text-background2"
+            children="More Info"
+            color="success"
+            onClick={() => navigate('/top-rated/' + id)}
+          />
         </div>
       </CardHeader>
       <Image

@@ -2,20 +2,19 @@ import { Tab, Tabs } from '@nextui-org/react'
 import SearchModal from '@renderer/widgets/searchbar'
 import { memo } from 'react'
 
-const Header = () => {
+const Header = ({ setTabIndex }: { setTabIndex: (e: number) => void }) => {
   return (
     <div className="w-full h-[10vh] flex justify-between items-center">
       <Tabs
+        size="lg"
         variant="underlined"
         color="success"
-        size="lg"
         onSelect={(e) => console.log(e)}
-        onClick={(e) => console.log(e)}
-        onChange={(e) => console.log(e)}
+        onSelectionChange={(e) => setTabIndex(Number(e))}
       >
-        <Tab title="Movies" value={0} />
-        <Tab title="TV Shows" value={1} />
-        <Tab title="Anime" value={2} />
+        <Tab onClick={() => setTabIndex(0)} title="Movies" key={0} />
+        <Tab onClick={() => setTabIndex(1)} title="TV Shows" key={1} />
+        <Tab onClick={() => setTabIndex(2)} title="Anime" key={2} />
       </Tabs>
       <SearchModal />
     </div>
