@@ -1,11 +1,9 @@
-import { Button, Card } from '@nextui-org/react'
-import { IconsSVG, imagesPNG } from '@renderer/shared/assets'
 import { LocalMainMovies } from '@renderer/shared/lib'
-import { UIBody } from '@renderer/shared/ui'
 import UIMainCard from '@renderer/shared/ui/MainCard/MainCard'
 import { useState } from 'react'
 import { useLocalMainMovies } from '../helper'
 import Header from './header'
+import Popular from './popular'
 
 const HomePage = () => {
   const { nextClick, previousClick, underTopIndex } = useLocalMainMovies()
@@ -26,7 +24,7 @@ const HomePage = () => {
           srcURL={LocalMainMovies[tabIndex][underTopIndex].poster.url}
           title={LocalMainMovies[tabIndex][underTopIndex].name}
         />
-        <div className="w-full flex flex-col justify-between items-start gap-4">
+        {/* <div className="w-full flex flex-col justify-between items-start gap-4">
           <UIBody>Popular</UIBody>
           <div className="w-full rounded-lg flex gap-8 overflow-x-hidden">
             {['Loki', 'Rick and Morty', 'Farcry'].map((item) => (
@@ -58,7 +56,8 @@ const HomePage = () => {
               </Card>
             ))}
           </div>
-        </div>
+        </div> */}
+        <Popular />
       </div>
     </div>
   )

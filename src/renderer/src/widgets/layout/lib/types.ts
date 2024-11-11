@@ -20,18 +20,18 @@ export interface IMovie {
   id: number
   isSeries: boolean
   ageRating: number | null
-  description: string
+  description: string | null
   alternativeName: string | null
-  name: string
+  name: string | null
   enName: string | null
   movieLength: number | null
   backdrop: {
-    previewUrl: string
-    url: string
+    previewUrl: string | null
+    url: string | null
   }
   poster: {
-    previewUrl: string
-    url: string
+    previewUrl: string | null
+    url: string | null
   }
   rating: {
     await: null | number
