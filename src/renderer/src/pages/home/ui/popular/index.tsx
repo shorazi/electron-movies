@@ -1,12 +1,15 @@
 import { Button, Card } from '@nextui-org/react'
-import { IconsSVG } from '@renderer/shared/assets'
+import WishlistButton from '@renderer/entities/wishlistButton/ui/WishlistButton'
 import { UIBody } from '@renderer/shared/ui'
+import { tokenInstance } from '@renderer/shared/utils'
 import { memo } from 'react'
 import { useNavigate } from 'react-router'
 import { dataMovies } from '../../lib'
 
 const Popular = () => {
   const navigate = useNavigate()
+  const { getToken } = tokenInstance
+
   return (
     <div className="w-full flex flex-col justify-between items-start gap-4">
       <UIBody>Popular</UIBody>
@@ -33,7 +36,19 @@ const Popular = () => {
                 <p>{movie.genre}</p>
               </div>
               <div className="w-full flex justify-between items-center">
-                <Button isIconOnly variant="flat" color="secondary" children={<IconsSVG.add />} />
+                {/* <Button isIconOnly variant="flat" color="secondary" children={<IconsSVG.add />} /> */}
+                <WishlistButton
+                  requestWatched={{
+                    movie_id: movie.id,
+                    user_id: getToken()?.user_id,
+                    status: 'Просмотрено'
+                  }}
+                  requestPending={{
+                    movie_id: movie.id,
+                    user_id: getToken()?.user_id,
+                    status: 'Отложено'
+                  }}
+                />
                 <Button
                   onClick={() => navigate(`/top-rated/${movie.id}`)}
                   className="text-background"

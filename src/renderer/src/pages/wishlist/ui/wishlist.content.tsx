@@ -18,7 +18,7 @@ const WishList = () => {
 
   return (
     <div className="w-full flex p-8 flex-col gap-10">
-      <div className="flex justify-start items-center gap-3">
+      <div className="flex justify-start items-center gap-2">
         <Button isIconOnly variant="flat" type="submit" onClick={() => navigate('/')}>
           <IconsSVG.previous />
         </Button>
@@ -27,64 +27,62 @@ const WishList = () => {
       <div>
         <UIBodyTitle>Wishlist</UIBodyTitle>
       </div>
-      <div className="flex w-full flex-col items-center">
-        <Tabs
-          aria-label="Options"
-          color="primary"
-          variant="underlined"
-          classNames={{
-            tabList: 'gap-6 w-full relative rounded-none p-0 border-b border-divider',
-            cursor: 'w-full bg-[#22d3ee]',
-            tab: 'max-w-fit px-0 h-12',
-            tabContent: 'group-data-[selected=true]:text-[#06b6d4]'
-          }}
+      <Tabs
+        aria-label="Options"
+        color="success"
+        variant="underlined"
+        classNames={{
+          tabList: 'gap-6 w-full relative rounded-none p-0 border-b border-divider'
+          // cursor: 'w-full bg-[#22d3ee]',
+          // tab: 'max-w-fit px-0 h-12'
+          // tabContent: 'group-data-[selected=true]:text-[#06b6d4]'
+        }}
+      >
+        <Tab
+          key="watched"
+          title={
+            <div className="flex items-center space-x-2">
+              <span>Просмотрено</span>
+            </div>
+          }
         >
-          <Tab
-            key="watched"
-            title={
-              <div className="flex items-center space-x-2">
-                <span>Просмотрено</span>
-              </div>
-            }
-          >
-            {!wishlist?.profile?.watched_movies?.length ? (
-              <div>No data</div>
-            ) : (
-              <Scrollable
-                icon={<IconsSVG.arrow />}
-                iconText="Swipe"
-                className="flex flex-1 justify-start gap-7 w-full overflow-auto scrollbar-hide p-3"
-              >
-                {wishlist?.profile?.watched_movies?.map((movie) => {
-                  return <MovieCard key={movie?.id} movieInfo={movie} />
-                })}
-              </Scrollable>
-            )}
-          </Tab>
-          <Tab
-            key="pending"
-            title={
-              <div className="flex items-center space-x-2">
-                <span>Отложено</span>
-              </div>
-            }
-          >
-            {!wishlist?.profile?.pending_movies?.length ? (
-              <div>No data</div>
-            ) : (
-              <Scrollable
-                icon={<IconsSVG.arrow />}
-                iconText="Swipe"
-                className="flex flex-1 justify-start gap-7 w-full overflow-auto scrollbar-hide p-3"
-              >
-                {wishlist?.profile?.pending_movies?.map((movie) => {
-                  return <MovieCard key={movie?.id} movieInfo={movie} />
-                })}
-              </Scrollable>
-            )}
-          </Tab>
-        </Tabs>
-      </div>
+          {!wishlist?.profile?.watched_movies?.length ? (
+            <div>No data</div>
+          ) : (
+            <Scrollable
+              icon={<IconsSVG.arrow />}
+              iconText="Swipe"
+              className="flex flex-1 justify-start gap-7 w-full overflow-auto scrollbar-hide p-3"
+            >
+              {wishlist?.profile?.watched_movies?.map((movie) => {
+                return <MovieCard key={movie?.id} movieInfo={movie} />
+              })}
+            </Scrollable>
+          )}
+        </Tab>
+        <Tab
+          key="pending"
+          title={
+            <div className="flex items-center space-x-2">
+              <span>Отложено</span>
+            </div>
+          }
+        >
+          {!wishlist?.profile?.pending_movies?.length ? (
+            <div>No data</div>
+          ) : (
+            <Scrollable
+              icon={<IconsSVG.arrow />}
+              iconText="Swipe"
+              className="flex flex-1 justify-start gap-7 w-full overflow-auto scrollbar-hide p-3"
+            >
+              {wishlist?.profile?.pending_movies?.map((movie) => {
+                return <MovieCard key={movie?.id} movieInfo={movie} />
+              })}
+            </Scrollable>
+          )}
+        </Tab>
+      </Tabs>
     </div>
   )
 }

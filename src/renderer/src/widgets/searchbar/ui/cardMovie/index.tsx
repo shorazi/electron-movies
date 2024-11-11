@@ -18,7 +18,7 @@ const CardMovie = ({ item }: { item: IMovie }) => {
           height={40}
           radius="sm"
           className="w-[40px] h-full object-cover"
-          src={item?.poster?.previewUrl || item?.poster?.url}
+          src={item?.poster?.previewUrl || item?.poster?.url || ''}
           width={40}
           isZoomed
         />

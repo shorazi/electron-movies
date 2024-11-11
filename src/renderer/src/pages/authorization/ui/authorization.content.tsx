@@ -11,7 +11,7 @@ const Authorization = () => {
   }
 
   return (
-    <div className="w-full min-h-[100vh] bg-gradient-to-br from-background via-background2 via-70% to-primary flex justify-center items-center">
+    <div className="w-full min-h-[100vh] bg-background2 flex justify-center items-center">
       <Card className="max-w-full w-[340px] h-[400px]" isBlurred shadow="lg">
         <CardBody className="overflow-hidden">
           <Tabs

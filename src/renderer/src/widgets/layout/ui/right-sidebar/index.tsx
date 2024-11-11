@@ -1,4 +1,4 @@
-import { Button } from '@nextui-org/react'
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/react'
 import Genres from '@renderer/entities/genres'
 import TopMovies from '@renderer/entities/top-movies'
 import { IconsSVG } from '@renderer/shared/assets'
@@ -20,13 +20,38 @@ const RightSidebar = () => {
     <div className="w-[335px] h-[95vh]">
       <div className="w-[335px] sticky px-4 h-[95vh] flex flex-col justify-between items-center">
         <div className="w-full h-[10vh] flex justify-between items-center">
-          {/* <Button isIconOnly variant="flat" color="secondary">
-            <IconsSVG.bell />
-          </Button> */}
-          <div className="text-[18px] font-bold text-success">{getToken()?.username}</div>
-          <Button isIconOnly variant="flat" color="secondary">
-            <IconsSVG.user />
+          <Button
+            isIconOnly
+            variant="flat"
+            color="secondary"
+            onClick={() => navigate('/wish-list')}
+          >
+            <IconsSVG.award />
           </Button>
+          <div className="text-[18px] font-bold text-success">{getToken()?.username}</div>
+          <Dropdown className="w-[250px] bg-background2 text-primary">
+            <DropdownTrigger>
+              <Button isIconOnly variant="flat" color="secondary">
+                <IconsSVG.user />
+              </Button>
+            </DropdownTrigger>
+            <DropdownMenu>
+              <DropdownItem>Username: {getToken()?.username}</DropdownItem>
+              <DropdownItem>Email: {getToken()?.email}</DropdownItem>
+              <DropdownItem>
+                <Button
+                  className="w-full"
+                  // isIconOnly
+                  variant="flat"
+                  color="primary"
+                  onClick={() => navigate('/wish-list')}
+                  startContent={<IconsSVG.award />}
+                >
+                  WishList
+                </Button>
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
         </div>
         <div className="w-full flex flex-col gap-7  h-[80vh]">
           {/* start code here */}
