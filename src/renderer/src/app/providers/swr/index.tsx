@@ -20,7 +20,7 @@ const SWRProvider = ({ children }: { children: ReactNode }) => {
         },
         revalidateOnReconnect: false,
         revalidateOnFocus: false,
-        dedupingInterval: 1000000,
+        // dedupingInterval: 1000000,
         shouldRetryOnError: false,
         keepPreviousData: true
       }}

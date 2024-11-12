@@ -1,3 +1,4 @@
+import { fetcher } from '@renderer/app/providers/swr/fetcher'
 import useSWRMutation from 'swr/mutation'
 
 const postData = async (url: string, { arg }: { arg: Record<string, any> }) => {
@@ -7,18 +8,9 @@ const postData = async (url: string, { arg }: { arg: Record<string, any> }) => {
     urlWithParams.searchParams.append(key, arg[key])
   })
 
-  const response = await fetch(urlWithParams.toString(), {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    }
+  return await fetcher(urlWithParams.toString(), {
+    method: 'POST'
   })
-
-  if (!response.ok) {
-    throw new Error('Failed to post data')
-  }
-
-  return response.json()
 }
 
 const useAddWishlist = (url: string) => {

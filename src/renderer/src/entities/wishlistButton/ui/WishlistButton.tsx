@@ -31,7 +31,7 @@ const WishlistButton = ({
         <DropdownItem
           onClick={async () => {
             await add(requestWatched)
-            await mutate(api + `/profile?id=${getToken()?.user_id}`)
+            mutate(api + `/profile?id=${getToken()?.user_id}`)
           }}
           variant="light"
           color="primary"
@@ -42,7 +42,7 @@ const WishlistButton = ({
         <DropdownItem
           onClick={async () => {
             await add(requestPending)
-            await mutate(api + `/profile?id=${getToken()?.user_id}`)
+            mutate(api + `/profile?id=${getToken()?.user_id}`)
           }}
           color="warning"
         >
